@@ -1,4 +1,4 @@
-🚧 This package is highly under development. 🛠️
+# 🚧 This package is highly under development. 🛠️
 
 ```JSX
 const { user, isLoading } = useProfile();
@@ -10,7 +10,7 @@ if(isLoading){
 
 // Current Way
 {isLoading ? (
-  <Skeleton count={5} />
+  <Skeleton circle />
 ) : (
   <Avatar src={user.image} name={user.name} />
 )}
