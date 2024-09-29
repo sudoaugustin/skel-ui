@@ -28,9 +28,9 @@
     "dev": "storybook dev -p 6006 --no-open",
     "build": "rm -rf dist && pnpm build:dts && pnpm build:css && pnpm build:esm && pnpm build:cjs",
     "build:dts": "tsc -p tsconfig.build.json --outDir dist",
-    "build:css": "esbuild ./src/styles.css --outdir=dist",
-    "build:esm": "esbuild ./src/*.{ts,tsx} --format=esm --outdir=dist/esm",
-    "build:cjs": "esbuild ./src/*.{ts,tsx} --format=cjs --outdir=dist/cjs"
+    "build:css": "esbuild src/styles.css --outdir=dist",
+    "build:esm": "esbuild src/*.ts* --format=esm --outdir=dist/esm",
+    "build:cjs": "esbuild src/*.ts* --format=cjs --outdir=dist/cjs"
   },
   "bugs": {
     "url": "https://github.com/sudoaugustin/react-sleleto/issues"
