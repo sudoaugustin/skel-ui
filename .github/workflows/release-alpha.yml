@@ -16,8 +16,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: develop
       - uses: pnpm/action-setup@v2
         with:
           version: 8
