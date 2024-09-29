@@ -1,0 +1,25 @@
+:root {
+  --skel-ui-color: #f0f0f0;
+  --skel-ui-radius: 0.25rem;
+}
+
+[data-loading="true"] {
+  animation: skel-ui-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite
+    alternate-reverse;
+  border-radius: var(--skel-ui-radius);
+  background-color: var(--skel-ui-color);
+
+  color: transparent !important;
+  cursor: default !important;
+  user-select: none !important;
+  pointer-events: none !important;
+}
+
+@keyframes skel-ui-pulse {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

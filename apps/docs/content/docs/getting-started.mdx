@@ -1,0 +1,62 @@
+---
+title: Getting Started
+description: Install Skel UI into your project and integrate skeletons into your components without the hassle.
+---
+
+
+## Installation
+
+Install the package into your project via command line.
+
+```package-install
+@skel-ui/react
+```
+
+## Importing CSS
+
+Import the CSS file into the root of your application.
+
+```js
+import "@skel-ui/react/styles.css";
+```
+
+## Start crafting UI
+
+Now you are ready to develop your UI.
+
+<Tabs items={["UserProfile.jsx", "UserProfile.css"]}>
+```json doc-gen:file
+{
+  "file": "./codes/installation/UserProfile.jsx",
+  "codeblock": {
+    "lang": "jsx",
+    "meta": "tab=\"UserProfile.jsx\""
+  }
+}
+```
+```json doc-gen:file
+{
+  "file": "./codes/installation/UserProfile.css",
+  "codeblock": {
+    "lang": "css",
+    "meta": "tab=\"UserProfile.css\""
+  }
+}
+```
+
+</Tabs>
+
+Now you not only have designed the skeleton, you have also finished your real UI. The above code will render a skeleton while fetching and an email address when fetching is complete. See live example here.
+
+> Unlike other skeleton libraries, Skel UI only allow CSS to define the size of the skeleton for mobile responsiveness.
+
+## Customization
+
+Customize the default color and border-radius of skeleton using css variables.
+
+```css title="global.css"
+:root {
+  --skel-ui-color: #f0f0f0;
+  --skel-ui-radius: 0.5rem;
+}
+```

@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .shiki .highlighted-word {
+    @apply !rounded !border-[hsl(var(--primary)_/_10%)];
+  }
+
+  aside [data-radix-scroll-area-viewport] button[aria-expanded="true"] {
+    @apply pointer-events-none [&>svg]:hidden;
+  }
+}

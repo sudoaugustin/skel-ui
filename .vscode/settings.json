@@ -4,6 +4,9 @@
     "source.organizeImports": "never",
     "source.organizeImports.biome": "explicit"
   },
+  "[mdx]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
   "[json][jsonc][javascript][javascriptreact][typescript][typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },

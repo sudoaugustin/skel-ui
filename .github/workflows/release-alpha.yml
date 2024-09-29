@@ -1,13 +1,19 @@
-name: Alpha Release
+name: "Publish Alpha Version"
+
 on:
-  push:
-    branches:
-      - "main"
+  workflow_dispatch:
+    inputs:
+      name:
+        type: choice
+        description: Which package to release
+        options:
+          - react
 
 jobs:
   publish:
     name: 🚀 Publishing to NPM
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
@@ -15,20 +21,20 @@ jobs:
           version: 8
       - uses: actions/setup-node@v3
         with:
-          node-version: 22
+          node-version: 20
           registry-url: https://registry.npmjs.org/
 
-      - name: Set vars
+      - name: Set variables
         run: |
-          echo "VERSION=$(npm view ./ version)" >> $GITHUB_ENV
           echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "VERSION=$(npm view ./packages/${{ github.event.inputs.name }} version)" >> $GITHUB_ENV
 
-      - name: Build & Publish
+      - name: Publish packages
         run: |
-          pnpm install
-          pnpm build
-          pnpm build:storybook
-          pnpm version ${{ env.VERSION }}-alpha.${{ env.COMMIT_ID }} --no-git-tag-version
-          pnpm publish --tag alpha --no-git-checks
+          pnpm install --no-frozen-lockfile
+          pnpm --filter "@skel-ui/${{ github.event.inputs.name }}" build
+          pnpm --filter "@skel-ui/${{ github.event.inputs.name }}" exec pnpm version ${{ env.VERSION }}-alpha.${{ env.COMMIT_ID }}
+          pnpm --filter "@skel-ui/${{ github.event.inputs.name }}" publish --tag alpha --access public --no-git-checks
+
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

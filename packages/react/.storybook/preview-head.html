@@ -1,0 +1,25 @@
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="module">
+    import tailwindcssPlugin from '../esm/tailwind.js';
+
+    tailwind.config = {
+        plugins: [
+            tailwindcssPlugin()
+        ]
+    }
+</script>
+
+<style>
+    :root {
+        font-family: 'General Sans', sans-serif;
+    }
+
+    #storybook-root {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

@@ -1,8 +1,10 @@
-name: Latest Release
+name: "Publish Stable Version"
+
 on:
-  release:
-    types:
-      - published
+  push:
+    branches:
+      - main
+
 jobs:
   publish:
     name: 🚀 Publishing to NPM
@@ -14,14 +16,13 @@ jobs:
           version: 8
       - uses: actions/setup-node@v3
         with:
-          node-version: 22
+          node-version: 20
           registry-url: https://registry.npmjs.org/
 
       - name: Build & Publish
         run: |
-          pnpm install
+          pnpm install --no-frozen-lockfile
           pnpm build
-          pnpm build:storybook
-          pnpm publish --no-git-checks
+          pnpm --filter "./packages/**" --filter "[origin/main]" publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

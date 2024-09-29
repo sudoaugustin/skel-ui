@@ -1,0 +1,52 @@
+{
+  "name": "@skel-ui/react",
+  "author": "https://github.com/sudoaugustin",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Next era of skeleton loading for react",
+  "main": "cjs/index.js",
+  "types": "dts/index.d.ts",
+  "module": "esm/index.js",
+  "sideEffects": false,
+  "files": ["cjs", "esm", "dts", "types"],
+  "keywords": ["react", "skeleton", "loading", "placeholder"],
+  "scripts": {
+    "dev": "storybook dev -p 6006 --no-open",
+    "build": "rm -rf cjs esm dts && pnpm build:dts && pnpm build:esm && pnpm build:cjs",
+    "build:dts": "tsc -p tsconfig.build.json --outDir ./dts",
+    "build:esm": "esbuild ./src/* --format=esm --outdir=./esm",
+    "build:cjs": "esbuild ./src/* --format=cjs --outdir=./cjs"
+  },
+  "bugs": {
+    "url": "https://github.com/sudoaugustin/react-sleleto/issues"
+  },
+  "homepage": "https://github.com/sudoaugustin/react-sleleto#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudoaugustin/react-sleleto"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.9.0",
+    "@storybook/addon-essentials": "^8.3.3",
+    "@storybook/addon-interactions": "^8.3.3",
+    "@storybook/addon-links": "^8.3.3",
+    "@storybook/addon-onboarding": "^8.3.3",
+    "@storybook/blocks": "^8.3.3",
+    "@storybook/react": "^8.3.3",
+    "@storybook/react-vite": "^8.3.3",
+    "@storybook/test": "^8.3.3",
+    "@types/react": "^18.3.9",
+    "@types/react-dom": "^18.0.10",
+    "esbuild": "^0.17.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^8.3.3",
+    "swr": "^2.2.5",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0  || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.0.0  || ^17.0.0 || ^18.0.0"
+  }
+}

@@ -17,9 +17,9 @@ if(isLoading){
 <h1>{user.name || <Skeleton />}</h1>
 
 
-// React Skeleto's Way ✨
-<Skeleto.Root isLoading={isLoading}>
-  <Skeleto.Item as={Image} src={user.image} />
-  <Skeleto.Item as="h1">{user.name}</Skeleto.Item>
-</Skeleto.Root>
+// Skel's Way ✨
+<Skel.Root isLoading={isLoading}>
+  <Skel.Item as={Avatar} src={user.image} />
+  <Skel.Item as="h1">{user.name}</Skel.Item>
+</Skel.Root>
 ```
