@@ -5,9 +5,9 @@
 
 [data-loading="true"] {
   animation: skel-ui-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite
-    alternate-reverse;
-  border-radius: var(--skel-ui-radius);
-  background-color: var(--skel-ui-color);
+    alternate-reverse !important;
+  border-radius: var(--skel-ui-radius) !important;
+  background-color: var(--skel-ui-color) !important;
 
   color: transparent !important;
   cursor: default !important;
