@@ -1,45 +1,62 @@
 import React from "react";
 
-type As<T> = React.ElementType | React.JSXElementConstructor<T>;
+type HTMLProps<T extends React.ElementType> = Omit<React.ComponentPropsWithoutRef<T>, "children">;
 
-type RootProps = {
+type RootProps<T extends React.ElementType = "div"> = {
+  as?: T;
   children: React.ReactNode;
   isLoading: boolean;
-};
+} & HTMLProps<T>;
 
-type ItemProps<T extends As<T>> = {
+type ItemProps<T extends React.ElementType = "p"> = {
   as?: T;
-  children?: React.ReactNode | (() => React.ReactNode);
   color?: string;
   radius?: string;
-} & (T extends React.ElementType ? Omit<React.ComponentPropsWithoutRef<T>, "children"> : {});
+  children?: React.ReactNode | (() => React.ReactNode);
+} & HTMLProps<T>;
 
 const IsLoadingContext = React.createContext(false);
 
-function Root({ isLoading = true, children }: RootProps) {
-  return <IsLoadingContext.Provider value={isLoading}>{children}</IsLoadingContext.Provider>;
+function Root<T extends React.ElementType = "div">({ as, isLoading = true, children, ...rest }: RootProps<T>) {
+  const Component = as || "div";
+  return (
+    <IsLoadingContext.Provider value={isLoading}>
+      <Component {...rest} data-loading={isLoading}>
+        {children}
+      </Component>
+    </IsLoadingContext.Provider>
+  );
 }
 
-function Item<T extends As<T>>({ as, color, radius, children, ...props }: ItemProps<T>) {
+function Item<T extends React.ElementType = "p">({ as, color, radius, children, ...rest }: ItemProps<T>) {
   const isLoading = React.useContext(IsLoadingContext);
-  const Component = as || "p";
+  const component = as || "p";
+  const Component = typeof component === "string" ? component : isLoading ? "div" : component;
 
   return (
     <Component
-      {...props}
+      {...rest}
       style={
         {
           // @ts-ignore
-          ...props.style,
+          ...rest.style,
           "--skel-ui-color": color,
           "--skel-ui-radius": radius,
         } as React.CSSProperties
       }
       data-loading={isLoading}
     >
-      {isLoading ? null : typeof children === "function" ? children() : children}
+      {isLoading ? "‌" : typeof children === "function" ? children() : children}
     </Component>
   );
 }
 
-export default { Root, Item };
+export function generatePlaceholder<T = { [k: string]: unknown }>(length: number, primary: string) {
+  return Array(length)
+    .fill(null)
+    .map((_, index) => ({ [primary]: `id-${index}` }) as T);
+}
+
+const Skel = { Root, Item };
+
+export default Skel;

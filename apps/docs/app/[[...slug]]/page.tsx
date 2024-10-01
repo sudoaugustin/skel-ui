@@ -1,12 +1,7 @@
 import { source } from "app/source";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import defaultMdxComponents from "fumadocs-ui/mdx";
-import {
-  DocsBody,
-  DocsDescription,
-  DocsPage,
-  DocsTitle,
-} from "fumadocs-ui/page";
+import { DocsBody, DocsDescription, DocsPage, DocsTitle } from "fumadocs-ui/page";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -25,7 +20,7 @@ export default async function Page({ params }: Props) {
     <DocsPage toc={page.data.toc} full={page.data.full}>
       <DocsTitle className="font-medium">{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
-      <DocsBody className="prose-headings:font-medium prose-p:leading-normal">
+      <DocsBody className="prose-headings:font-medium">
         <MDX components={{ ...defaultMdxComponents, Tab, Tabs }} />
       </DocsBody>
     </DocsPage>

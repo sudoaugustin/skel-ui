@@ -7,7 +7,7 @@
     @apply !rounded !border-[hsl(var(--primary)_/_10%)];
   }
 
-  aside [data-radix-scroll-area-viewport] button[aria-expanded="true"] {
-    @apply pointer-events-none [&>svg]:hidden;
+  aside a {
+    @apply !font-normal;
   }
 }

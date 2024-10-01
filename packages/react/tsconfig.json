@@ -7,9 +7,6 @@
     "declaration": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-  },
-  "exclude": [
-    "tests-ssr"
-  ]
+    "forceConsistentCasingInFileNames": true
+  }
 }

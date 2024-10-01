@@ -1,7 +1,7 @@
 import type { Meta } from "@storybook/react";
 import React from "react";
 import useSWR from "swr";
-import Skel from "../src/index";
+import Skel from "../src";
 import "../src/index.css";
 import { fetcher } from "../utils";
 

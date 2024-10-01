@@ -1,0 +1,41 @@
+---
+title: Rendering List
+description: Skel UI has a built-in utility to generate placeholders for list.
+---
+
+<Tabs items={["List.tsx", "useUsers.ts"]}>
+
+```json doc-gen:file
+{
+  "file": "./codes/render-list/List.tsx",
+  "codeblock": {
+    "lang": "tsx",
+    "meta": "tab=\"List.tsx\""
+  }
+}
+```
+
+```json doc-gen:file
+{
+  "file": "./codes/render-list/useUsers.ts",
+  "codeblock": {
+    "lang": "ts",
+    "meta": "tab=\"useUsers.ts\""
+  }
+}
+```
+
+</Tabs>
+
+## generatePlaceholder
+
+```js
+const placeholderUsers = generatePlaceholder(length, primaryKey);
+```
+
+### Parameters
+
+| Name         | Type     | Description                                                         |
+| ------------ | -------- | ------------------------------------------------------------------- |
+| `length`     | `number` | The length of placeholder                                           |
+| `primaryKey` | `string` | Name of the attribute that will be unique and will be used as `key` |
