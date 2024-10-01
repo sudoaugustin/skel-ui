@@ -1,6 +1,6 @@
 import { DocsLayout } from "fumadocs-ui/layout";
 import { RootProvider } from "fumadocs-ui/provider";
-import { JetBrains_Mono } from "next/font/google";
+import { DM_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import "./global.css";
@@ -12,7 +12,7 @@ const sans = localFont({
   variable: "--font-sans",
 });
 
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const mono = DM_Mono({ subsets: ["latin"], weight: "400", variable: "--font-mono" });
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

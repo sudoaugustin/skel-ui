@@ -1,0 +1,129 @@
+---
+title: Components
+---
+
+## Root
+
+Handles the loading state of all children `Item` using context.
+
+```jsx
+import Skel from "@skel-ui/react";
+
+function Demo() {
+  return (
+    <Skel.Root isLoading={isLoading}>
+      <Skel.Item>...</Skel.Item>
+      <div>....</div>
+    </Skel.Root>
+  );
+}
+```
+
+### Props
+
+| Name        | Type          | Default | Description                          |
+| ----------- | ------------- | ------- | ------------------------------------ |
+| `as`        | `ElementType` | `div`   | HTML tag to render                   |
+| `isLoading` | `boolean`     | `true`  | Show the loading skeleton if `true`. |
+
+### Custom tag
+
+To render custom HTML tag, please use `as` property.
+
+```jsx
+<Skel.Root
+  as="ul" // [!code highlight]
+>
+  ...
+</Skel.Root>
+```
+
+## Item
+
+Takes the loading state from nearest `Root` component and render the UI accordingly.
+
+```jsx
+import Skel from "@skel-ui/react";
+
+function Demo() {
+  return (
+    <Skel.Root isLoading={isLoading}>
+      <Skel.Item>...</Skel.Item>
+    </Skel.Root>
+  );
+}
+```
+
+### Props
+
+| Name       | Type                             | Default | Description                                  |
+| ---------- | -------------------------------- | ------- | -------------------------------------------- |
+| `as`       | `ElementType`                    | `p`     | HTML tag or React component to render        |
+| `children` | `ReactNode \| (() => ReactNode)` | -       |                                              |
+| `color`    | `string`                         | -       | Overrides the default skeleton color         |
+| `radius`   | `string`                         | -       | Overrides the default skeleton border-radius |
+
+### Custom tag
+
+To render custom HTML tag, please use `as` property.
+
+```jsx
+<Skel.Item
+  as="a" // [!code highlight]
+  href="https://skel-ui.augustin.zip"
+>
+  ...
+</Skel.Item>
+```
+
+### Custom component
+
+When you pass a react component, all of its props are sent to the `Item` component.
+
+```jsx
+import Image from "next/image";
+
+<Skel.Item
+  as={Image}
+  src="..." // [!code highlight]
+  quality={85} // [!code highlight]
+  className="....."
+/>;
+```
+
+_Note: If you pass a react component into `as`, Skel UI will render a empty `div` instead of that component while loading to avoid unexpected bahaviours._
+
+### Function as children
+
+This pattern is useful to avoid rendering performance-intensive components while loading.
+
+```jsx
+function Demo() {
+  const { user, isLoading } = useProfile();
+
+  return (
+    <Skel.Root isLoading={isLoading}>
+      <Skel.Item>
+        <IntenseComponent /> // [!code highlight]
+      </Skel.Item>
+    </Skel.Root>
+  );
+}
+```
+
+In the above code, the `IntenseComponent` will be rendered twice. To avoid this we can wrap that component in a function like below.
+
+```jsx
+function Demo() {
+  const { user, isLoading } = useProfile();
+
+  return (
+    <Skel.Root isLoading={isLoading}>
+      <Skel.Item>
+        {/* This function get executed only once when loading is complete */}
+        {() => <IntenseComponent />} // [!code highlight]
+      </Skel.Item>
+    </Skel.Root>
+  );
+}
+```

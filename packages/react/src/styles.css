@@ -1,18 +1,19 @@
 :root {
-  --skel-ui-color: #f0f0f0;
+  --skel-ui-color: #cbd5e1;
   --skel-ui-radius: 0.25rem;
 }
 
 [data-loading="true"] {
-  animation: skel-ui-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite
-    alternate-reverse !important;
-  border-radius: var(--skel-ui-radius) !important;
+  border-radius: var(--skel-ui-radius);
   background-color: var(--skel-ui-color) !important;
 
   color: transparent !important;
   cursor: default !important;
   user-select: none !important;
   pointer-events: none !important;
+
+  animation: skel-ui-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite
+    alternate-reverse !important;
 }
 
 @keyframes skel-ui-pulse {
