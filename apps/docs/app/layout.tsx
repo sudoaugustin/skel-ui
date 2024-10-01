@@ -35,7 +35,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             nav={{ title: <Logo /> }}
             tree={source.pageTree}
             sidebar={{ defaultOpenLevel: 1 }}
-            githubUrl="https://github.com/sudoaugustin/@skel-ui"
+            githubUrl="https://github.com/sudoaugustin/skel-ui"
           >
             {children}
           </DocsLayout>
