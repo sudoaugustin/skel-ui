@@ -1,4 +1,5 @@
 import { createPreset } from "fumadocs-ui/tailwind-plugin";
+import tailwindCSSShorthand from "tailwindcss-shorthand";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
@@ -17,4 +18,5 @@ export default {
     },
   },
   presets: [createPreset({})],
+  plugins: [tailwindCSSShorthand()],
 };
