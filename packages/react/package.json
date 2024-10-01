@@ -1,7 +1,7 @@
 {
   "name": "@skel-ui/react",
   "author": "https://github.com/sudoaugustin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "description": "Next era of skeleton loading for React",
   "files": ["dist"],
