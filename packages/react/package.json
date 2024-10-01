@@ -31,12 +31,12 @@
     "build:cjs": "esbuild src/*.ts* --format=cjs --outdir=dist/cjs"
   },
   "bugs": {
-    "url": "https://github.com/sudoaugustin/react-sleleto/issues"
+    "url": "https://github.com/sudoaugustin/skel-ui/issues"
   },
   "homepage": "https://skel-ui.augustin.zip",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sudoaugustin/react-sleleto"
+    "url": "git+https://github.com/sudoaugustin/skel-ui"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
