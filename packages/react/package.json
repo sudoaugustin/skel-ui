@@ -1,7 +1,7 @@
 {
   "name": "@skel-ui/react",
   "author": "https://github.com/sudoaugustin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "description": "Next era of skeleton loading for React",
   "files": ["dist"],
@@ -27,8 +27,8 @@
     "build": "rm -rf dist && pnpm build:dts && pnpm build:css && pnpm build:esm && pnpm build:cjs",
     "build:dts": "tsc -p tsconfig.build.json --outDir dist",
     "build:css": "esbuild src/styles.css --outdir=dist",
-    "build:esm": "esbuild src/*.ts* --format=esm --outdir=dist/esm",
-    "build:cjs": "esbuild src/*.ts* --format=cjs --outdir=dist/cjs"
+    "build:esm": "esbuild src/*.ts* --jsx=automatic --format=esm --outdir=dist/esm",
+    "build:cjs": "esbuild src/*.ts* --jsx=automatic --format=cjs --outdir=dist/cjs"
   },
   "bugs": {
     "url": "https://github.com/sudoaugustin/skel-ui/issues"
@@ -50,7 +50,7 @@
     "@storybook/test": "^8.3.3",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.0.10",
-    "esbuild": "^0.17.5",
+    "esbuild": "^0.24.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "storybook": "^8.3.3",
