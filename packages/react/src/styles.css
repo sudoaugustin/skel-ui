@@ -3,7 +3,7 @@
   --skel-ui-radius: 0.25rem;
 }
 
-[data-loading="true"] {
+[data-skel-item][data-loading="true"] {
   border-radius: var(--skel-ui-radius);
   background-color: var(--skel-ui-color) !important;
 

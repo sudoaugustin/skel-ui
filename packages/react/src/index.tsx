@@ -45,6 +45,7 @@ function Item<T extends React.ElementType = "p">({ as, color, radius, children, 
         } as React.CSSProperties
       }
       data-loading={isLoading}
+      data-skel-item
     >
       {isLoading ? "‌" : typeof children === "function" ? children() : children}
     </Component>
