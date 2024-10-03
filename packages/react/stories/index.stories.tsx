@@ -1,54 +1,82 @@
+import { usePostById, usePosts, useUserById } from "@repo/hooks";
 import type { Meta } from "@storybook/react";
 import React from "react";
-import useSWR from "swr";
-import Skel from "../src";
-import "../src/index.css";
-import { fetcher } from "../utils";
+import Skel, { generatePlaceholder } from "../src";
+import "../src/styles.css";
 
 export default {
   title: "Skel",
   component: Skel.Root,
 } satisfies Meta<typeof Skel.Root>;
 
-function Button({ link, label, className, ...rest }: { link: string; label: string; className: string }) {
+function Image(props: React.ImgHTMLAttributes<HTMLImageElement>) {
+  return <img {...props} alt="" />;
+}
+
+function List({ userId }: { userId?: number }) {
+  const { posts = generatePlaceholder(4, "postId"), isLoading } = usePosts(userId);
   return (
-    <button
-      {...rest}
-      type="button"
-      className={`${className} rounded-md text-md font-semibold h-12 flex-1 flex justify-center items-center`}
-    >
-      {label}
-    </button>
+    <Skel.Root isLoading={isLoading} className="grid grid-cols-2 gap-5 w-full max-w-2xl">
+      {posts.map(({ postId, image, title, description, viewsCount, likesCount }) => (
+        <div key={postId} className="w-full max-w-80 flex flex-col rounded-lg border border-slate-200 p-2.5">
+          <Skel.Item as={Image} src={image} width={800} height={530} className="aspect-[800/530] rounded-lg" />
+          <Skel.Item as="h1" className="text-lg font-semibold mt-5 loading:max-w-48">
+            {title}
+          </Skel.Item>
+          <Skel.Item className="text-sm my-1.5 line-clamp-4 loading:h-20">{description}</Skel.Item>
+          <Skel.Item className="text-xs loading:max-w-32">
+            {viewsCount} Views • {likesCount} Likes
+          </Skel.Item>
+        </div>
+      ))}
+    </Skel.Root>
   );
 }
 
-export const Default = () => {
-  const { data: post = {}, isLoading } = useSWR("posts/1", fetcher);
+export const PostCard = () => {
+  const { post, isLoading } = usePostById(101);
 
   return (
-    <div className="w-full max-w-md shadow hover:shadow-lg antialiased rounded-md border border-gray-100 p-4">
-      <Skel.Root isLoading>
-        <Skel.Item as="h1" className="text-2xl font-bold loading:h-8 line-clamp-1 max-w-60">
-          {post.title}
-        </Skel.Item>
-        <Skel.Item className="text-sm line-clamp-4 text-justify loading:h-20 loading:w-full mt-2.5 mb-5">
-          {post.content}
-        </Skel.Item>
-        <div className="flex space-x-2">
-          <Skel.Item as={Button} link="" label="Upvote" className="bg-blue-800 text-white" />
-          <Skel.Item as={Button} link="" label="Comment" className="bg-blue-50 text-blue-800" />
-        </div>
-      </Skel.Root>
-    </div>
+    <Skel.Root isLoading={isLoading} className="w-full max-w-80 flex flex-col rounded-lg border border-slate-200 p-2.5">
+      <Skel.Item as={Image} src={post?.image} width={800} height={530} className="aspect-[800/530] rounded-lg" />
+      <Skel.Item as="h1" className="text-lg font-semibold mt-5 loading:max-w-48">
+        {post?.title}
+      </Skel.Item>
+      <Skel.Item className="text-sm my-1.5 loading:h-20">{post?.description}</Skel.Item>
+      <Skel.Item className="text-xs loading:max-w-32">
+        {post?.viewsCount} Views • {post?.likesCount} Likes
+      </Skel.Item>
+    </Skel.Root>
   );
 };
 
-export const CustomSkeln = () => {
+export const PostCards = () => {
+  return <List userId={1} />;
+};
+
+export const UserPostCards = () => {
+  const { user, isLoading } = useUserById(1);
   return (
-    <Skel.Root isLoading>
-      <Skel.Item color="#1e293b" radius="50%" className="text-2xl h-60 w-60">
-        Hello World
-      </Skel.Item>
+    <Skel.Root isLoading={isLoading} className="w-full max-w-2xl">
+      <div className="w-full bg-slate-100 rounded-lg overflow-hidden mb-10">
+        <div className="bg-gradient-to-tr from-sky-400 to-blue-600 h-40 w-full" />
+        <div className="p-5 pt-0 -mt-12">
+          <Skel.Item
+            as={Image}
+            src={user?.avatar}
+            radius="50%"
+            width={100}
+            height={100}
+            className="size-24 rounded-full loaded:ring ring-white object-cover"
+          />
+          <Skel.Item className="text-lg font-bold mt-5 mb-1 loading:max-w-60">{user?.name}</Skel.Item>
+          <Skel.Item className="text-sm font-medium loading:max-w-32">{user?.email}</Skel.Item>
+        </div>
+      </div>
+      <div>
+        <Skel.Item className="mb-2.5 w-20 text-lg font-bold">Posts</Skel.Item>
+        <List userId={user?.id} />
+      </div>
     </Skel.Root>
   );
 };
