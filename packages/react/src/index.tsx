@@ -38,7 +38,6 @@ function Item<T extends React.ElementType = "p">({ as, color, radius, children, 
       {...rest}
       style={
         {
-          // @ts-ignore
           ...rest.style,
           "--skel-ui-color": color,
           "--skel-ui-radius": radius,
@@ -47,15 +46,26 @@ function Item<T extends React.ElementType = "p">({ as, color, radius, children, 
       data-loading={isLoading}
       data-skel-item
     >
-      {isLoading ? "‌" : typeof children === "function" ? children() : children}
+      {isLoading ? " ‌ " : typeof children === "function" ? children() : children}
     </Component>
   );
 }
 
+// function generateString(children: unknown) {
+//   const str =
+//     typeof children === "object" || typeof children === "function"
+//       ? "        "
+//       : typeof children === "string"
+//         ? children.replace(/undefined/g, " ")
+//         : `${children}`;
+
+//   return str.replace(/./g, " ‌ ");
+// }
+
 export function generatePlaceholder<T = { [k: string]: unknown }>(length: number, primary: string) {
   return Array(length)
     .fill(null)
-    .map((_, index) => ({ [primary]: `id-${index}` }) as T);
+    .map((_, index) => ({ [primary]: `skel-ui-id-${index}` }) as T);
 }
 
 const Skel = { Root, Item };

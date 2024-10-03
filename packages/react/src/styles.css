@@ -1,26 +1,48 @@
 :root {
   --skel-ui-color: #cbd5e1;
+  --skel-ui-shimmer: #f1f0f0;
   --skel-ui-radius: 0.25rem;
 }
 
 [data-skel-item][data-loading="true"] {
-  border-radius: var(--skel-ui-radius);
-  background-color: var(--skel-ui-color) !important;
+  animation: skel-ui-shimmer 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+  background: linear-gradient(
+    to right,
+    var(--skel-ui-color) 33%,
+    var(--skel-ui-shimmer),
+    var(--skel-ui-color) 66%
+  );
 
-  color: transparent !important;
+  background-size: 300%;
+
+  border-radius: var(--skel-ui-radius);
   cursor: default !important;
   user-select: none !important;
   pointer-events: none !important;
+}
 
-  animation: skel-ui-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite
-    alternate-reverse !important;
+.skel-ui-pluse [data-skel-item][data-loading="true"] {
+  animation: skel-ui-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+  background-color: var(--skel-ui-color) !important;
 }
 
 @keyframes skel-ui-pulse {
   0% {
     opacity: 1;
   }
-  100% {
+  50% {
     opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes skel-ui-shimmer {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
   }
 }

@@ -9,10 +9,12 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
     "@skel-ui/react": "workspace:*",
     "fumadocs-core": "13.4.10",
     "fumadocs-mdx": "10.0.2",
     "fumadocs-ui": "13.4.10",
+    "hooks": "workspace:*",
     "next": "^14.2.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -26,7 +28,7 @@
     "autoprefixer": "^10.4.20",
     "fumadocs-docgen": "^1.2.0",
     "postcss": "^8.4.45",
-    "tailwindcss": "^3.4.10",
+    "tailwindcss": "^3.4.13",
     "typescript": "^5.5.4"
   }
 }
