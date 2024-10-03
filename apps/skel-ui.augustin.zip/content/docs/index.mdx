@@ -3,6 +3,9 @@ title: Getting Started
 description: Skel UI resolves the challenges of implementing skeletons by eliminating the need to create dedicated loading screens and providing an easier way to manage skeleton states using react-context.
 ---
 
+import Portal from "app/Portal";
+import PostCard from "content/code/components/PostCard.tsx";
+
 ## Installation
 
 Install the package into your project via command line.
@@ -23,27 +26,20 @@ import "@skel-ui/react/styles.css";
 
 Now you are ready to develop your UI.
 
-```jsx
-import Skel from "@skel-ui/react";
-import Image from "next/Image";
+<Portal>
+  <PostCard />
+</Portal>
 
-function Profile() {
-  const { user, isLoading } = useProfile();
-
-  return (
-    <Skel.Root isLoading={isLoading}>
-      <Skel.Item className="user-avatar">
-        <Image src={user.profile} />
-      </Skel.Item>
-      <Skel.Item as="h1" className="user-email">
-        {user.email}
-      </Skel.Item>
-    </Skel.Root>
-  );
+```json doc-gen:file
+{
+  "file": "content/code/components/PostCard.tsx",
+  "codeblock": {
+    "lang": "tsx"
+  }
 }
 ```
 
-Now, not only have you designed the skeleton, but you have also done the actual UI. Additionally, the skeleton state for the entire UI is handled in a single place at the `<Skel.Root>` .
+Now, not only have you designed the skeleton, but you have also done the actual UI. Additionally, the loading state for the entire UI is handled in a single place at the `<Skel.Root>` .
 
 ## Customization
 

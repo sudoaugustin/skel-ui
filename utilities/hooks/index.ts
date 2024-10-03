@@ -2,15 +2,15 @@ import $posts from "@repo/data/posts.json";
 import $users from "@repo/data/users.json";
 import useMockFetch from "./useMockFetch";
 
+export function usePost() {
+  const { state, isLoading } = useMockFetch($posts.find((post) => post.postId === 101));
+
+  return { post: state, isLoading };
+}
+
 export function usePosts(userId?: number) {
   const { state, isLoading } = useMockFetch(userId ? $posts.filter((post) => post.userId === userId) : undefined);
   return { posts: state, isLoading };
-}
-
-export function usePostById(postId: number) {
-  const { state, isLoading } = useMockFetch($posts.find((post) => post.postId === postId));
-
-  return { post: state, isLoading };
 }
 
 export function useUsers() {

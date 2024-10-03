@@ -1,5 +1,5 @@
-import { usePostById, usePosts, useUserById } from "@repo/hooks";
 import type { Meta } from "@storybook/react";
+import { usePost, usePosts, useUserById } from "hooks";
 import React from "react";
 import Skel, { generatePlaceholder } from "../src";
 import "../src/styles.css";
@@ -34,7 +34,7 @@ function List({ userId }: { userId?: number }) {
 }
 
 export const PostCard = () => {
-  const { post, isLoading } = usePostById(101);
+  const { post, isLoading } = usePost();
 
   return (
     <Skel.Root isLoading={isLoading} className="w-full max-w-80 flex flex-col rounded-lg border border-slate-200 p-2.5">
@@ -64,9 +64,9 @@ export const UserPostCards = () => {
           <Skel.Item
             as={Image}
             src={user?.avatar}
-            radius="50%"
             width={100}
             height={100}
+            radius="50%"
             className="size-24 rounded-full loaded:ring ring-white object-cover"
           />
           <Skel.Item className="text-lg font-bold mt-5 mb-1 loading:max-w-60">{user?.name}</Skel.Item>

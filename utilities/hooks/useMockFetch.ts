@@ -6,7 +6,7 @@ export default function useMockFetch<T>(value: T) {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setState(value);
-    }, 10000);
+    }, 7500);
 
     return () => {
       clearTimeout(timeout);

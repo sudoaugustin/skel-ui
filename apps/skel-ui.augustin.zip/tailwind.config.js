@@ -1,3 +1,4 @@
+import skelUITailwind from "@skel-ui/react/tailwind";
 import { createPreset } from "fumadocs-ui/tailwind-plugin";
 import tailwindCSSShorthand from "tailwindcss-shorthand";
 import defaultTheme from "tailwindcss/defaultTheme";
@@ -5,9 +6,9 @@ import defaultTheme from "tailwindcss/defaultTheme";
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./content/**/*.{md,mdx}",
+    "./content/**/*.{ts,tsx,md,mdx}",
+    "./components/**/*.{ts,tsx}",
     "./mdx-components.{ts,tsx}",
     "./node_modules/fumadocs-ui/dist/**/*.js",
   ],
@@ -18,5 +19,5 @@ export default {
     },
   },
   presets: [createPreset({})],
-  plugins: [tailwindCSSShorthand()],
+  plugins: [tailwindCSSShorthand(), skelUITailwind()],
 };

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/hooks",
+  "name": "hooks",
   "version": "0.0.1",
   "description": "Useful hooks used across repo",
   "dependencies": {

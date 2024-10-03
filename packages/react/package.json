@@ -1,21 +1,14 @@
 {
   "name": "@skel-ui/react",
   "author": "https://github.com/sudoaugustin",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "license": "MIT",
   "description": "Next era of skeleton loading for React",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/esm/index.js",
-  "keywords": [
-    "react",
-    "skeleton",
-    "loading",
-    "placeholder"
-  ],
+  "keywords": ["react", "skeleton", "loading", "placeholder"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -48,7 +41,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
     "@heroicons/react": "^2.1.5",
-    "@repo/hooks": "workspace:*",
+    "hooks": "workspace:*",
     "@storybook/addon-essentials": "^8.3.4",
     "@storybook/addon-interactions": "^8.3.4",
     "@storybook/addon-links": "^8.3.4",
