@@ -10,8 +10,8 @@ type RootProps<T extends React.ElementType = "div"> = {
 
 type ItemProps<T extends React.ElementType = "p"> = {
   as?: T;
-  width?: string;
-  height?: string;
+  sw?: string;
+  sh?: string;
   radius?: string;
   children?: React.ReactNode | (() => React.ReactNode);
 } & HTMLProps<T>;
@@ -29,15 +29,7 @@ function Root<T extends React.ElementType = "div">({ as, isLoading = true, child
   );
 }
 
-function Item<T extends React.ElementType = "p">({
-  as,
-  color,
-  width,
-  height,
-  radius,
-  children,
-  ...rest
-}: ItemProps<T>) {
+function Item<T extends React.ElementType = "p">({ as, sw, sh, color, radius, children, ...rest }: ItemProps<T>) {
   const isLoading = React.useContext(IsLoadingContext);
   const component = as || "p";
   const Component = typeof component === "string" ? component : isLoading ? "div" : component;
@@ -48,8 +40,8 @@ function Item<T extends React.ElementType = "p">({
       style={
         {
           ...rest.style,
-          "--skel-ui-width": width,
-          "--skel-ui-height": height,
+          "--skel-ui-width": sw,
+          "--skel-ui-height": sh,
           "--skel-ui-radius": radius,
         } as React.CSSProperties
       }
