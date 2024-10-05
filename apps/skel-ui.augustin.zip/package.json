@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "dev": "pnpm code-gen && next dev",
+    "build": "pnpm code-gen && next build",
     "start": "next start",
+    "code-gen": "node scripts/code-gen.js",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
@@ -14,7 +15,6 @@
     "fumadocs-core": "13.4.10",
     "fumadocs-mdx": "10.0.2",
     "fumadocs-ui": "13.4.10",
-    "hooks": "workspace:*",
     "next": "^14.2.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -26,6 +26,7 @@
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
+    "fs-jetpack": "^5.1.0",
     "fumadocs-docgen": "^1.2.0",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.13",

@@ -1,0 +1,40 @@
+---
+title: Styling
+description: Skel UI gives you full control over the styling.
+---
+
+## Customize
+
+Overrides the skeleton's default colors and border-radius with CSS variables.
+
+```css title="global.css"
+:root {
+  --skel-ui-color: #a1a1aa;
+  --skel-ui-shimmer: #e4e4e7;
+  --skel-ui-radius: 0.25rem;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --skel-ui-color: #27272a;
+    --skel-ui-shimmer: #09090b;
+  }
+}
+```
+
+## Data attribute
+
+Both `Root` and `Item` have a `data-loading` attribute to create styles based on the loading state.
+
+```css
+/* This style will be applied during loading. */
+.card-title[data-loading="true"] {
+  width: 5rem;
+}
+
+/* This style will be applied after loading is done. */
+.card-title[data-loading="false"]:hover {
+  background: #f97316;
+}
+```

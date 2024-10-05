@@ -3,7 +3,7 @@
     "userId": 1,
     "postId": 101,
     "title": "A Day in the Life",
-    "description": "Exploring the beauty of everyday moments, from the morning sunrise to quiet reflections in the evening. It's amazing how much we can appreciate when we take a moment to pause and truly see the world around us.",
+    "description": "Exploring the beauty of everyday moments, from the morning sunrise to quiet reflections in the evening.",
     "image": "https://plus.unsplash.com/premium_photo-1664443577542-06294d3354ff?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhZGllbnRzfGVufDB8MHwwfHx8MA%3D%3D",
     "viewsCount": 150,
     "likesCount": 20
@@ -12,7 +12,7 @@
     "userId": 1,
     "postId": 102,
     "title": "Mountain Adventures",
-    "description": "Hiking through the scenic mountains was both challenging and exhilarating. The crisp air, towering trees, and stunning views made every step worthwhile. It’s a reminder of how small we are in the vastness of nature.",
+    "description": "Hiking through the scenic mountains was both challenging and exhilarating. It’s a reminder of how small we are in the vastness of nature.",
     "image": "https://plus.unsplash.com/premium_photo-1673264933048-3bd3f5b86f9d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y292ZXIlMjBwaG90b3N8ZW58MHx8MHx8fDA%3D",
     "viewsCount": 200,
     "likesCount": 35
@@ -21,7 +21,7 @@
     "userId": 1,
     "postId": 103,
     "title": "City Nights",
-    "description": "The city skyline at night is mesmerizing, with its glittering lights and bustling energy. Walking through the streets as the city comes alive is an experience like no other, full of vibrant stories and hidden gems.",
+    "description": "The city skyline at night is mesmerizing, with its glittering lights and bustling energy. Walking through the streets is an experience.",
     "image": "https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y292ZXIlMjBwaG90b3N8ZW58MHwwfDB8fHww",
     "viewsCount": 300,
     "likesCount": 45
@@ -30,7 +30,7 @@
     "userId": 2,
     "postId": 104,
     "title": "Beachside Relaxation",
-    "description": "A peaceful day by the beach with the sound of waves crashing and the salty breeze in the air. It’s the perfect place to unwind, let go of stress, and reconnect with yourself as the sun sets on the horizon.",
+    "description": "A peaceful day by the beach with the sound of waves crashing and the salty breeze in the air.",
     "image": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvdmVyJTIwcGhvdG9zfGVufDB8MHwwfHx8MA%3D%3D",
     "viewsCount": 175,
     "likesCount": 25
@@ -138,7 +138,7 @@
     "userId": 1,
     "postId": 116,
     "title": "Neighborhood Exploration",
-    "description": "Walking through hidden gems of the city, discovering local shops, street art, and new cafes. It’s amazing how much more you notice when you slow down and truly explore your surroundings, appreciating the vibrancy of your own neighborhood.",
+    "description": "Walking through hidden gems of the city, discovering local shops, street art, and new cafes. It’s amazing when you explore your surroundings.",
     "image": "https://images.unsplash.com/photo-1635776062360-af423602aff3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z3JhZGllbnRzfGVufDB8MHwwfHx8MA%3D%3D",
     "viewsCount": 185,
     "likesCount": 20
