@@ -35,9 +35,6 @@ importers:
       fumadocs-ui:
         specifier: 13.4.10
         version: 13.4.10(@types/react-dom@18.3.0)(@types/react@18.3.10)(next@14.2.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.13)
-      hooks:
-        specifier: workspace:*
-        version: link:../../utilities/hooks
       next:
         specifier: ^14.2.8
         version: 14.2.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -66,6 +63,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
+      fs-jetpack:
+        specifier: ^5.1.0
+        version: 5.1.0
       fumadocs-docgen:
         specifier: ^1.2.0
         version: 1.2.0(typescript@5.6.2)
@@ -120,9 +120,6 @@ importers:
       esbuild:
         specifier: ^0.24.0
         version: 0.24.0
-      hooks:
-        specifier: workspace:*
-        version: link:../../utilities/hooks
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -135,24 +132,6 @@ importers:
       tailwindcss:
         specifier: ^3.4.13
         version: 3.4.13
-      typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
-
-  utilities/data: {}
-
-  utilities/hooks:
-    dependencies:
-      '@repo/data':
-        specifier: workspace:*
-        version: link:../data
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-    devDependencies:
-      '@types/react':
-        specifier: ^18.3.10
-        version: 18.3.10
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -2322,6 +2301,9 @@ packages:
     resolution: {integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==}
     engines: {node: '>=14.14'}
 
+  fs-jetpack@5.1.0:
+    resolution: {integrity: sha512-Xn4fDhLydXkuzepZVsr02jakLlmoARPy+YWIclo4kh0GyNGUHnTqeH/w/qIsVn50dFxtp8otPL2t/HcPJBbxUA==}
+
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
@@ -2908,6 +2890,10 @@ packages:
 
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
+
+  minimatch@5.1.6:
+    resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
+    engines: {node: '>=10'}
 
   minimatch@9.0.5:
     resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
@@ -5952,6 +5938,10 @@ snapshots:
       jsonfile: 6.1.0
       universalify: 2.0.1
 
+  fs-jetpack@5.1.0:
+    dependencies:
+      minimatch: 5.1.6
+
   fs.realpath@1.0.0: {}
 
   fsevents@2.3.3:
@@ -6861,6 +6851,10 @@ snapshots:
   minimatch@3.1.2:
     dependencies:
       brace-expansion: 1.1.11
+
+  minimatch@5.1.6:
+    dependencies:
+      brace-expansion: 2.0.1
 
   minimatch@9.0.5:
     dependencies:

@@ -12,9 +12,10 @@
     var(--skel-ui-shimmer),
     var(--skel-ui-color) 66%
   );
-
   background-size: 300%;
 
+  width: var(--skel-ui-width);
+  height: var(--skel-ui-height);
   border-radius: var(--skel-ui-radius);
   cursor: default !important;
   user-select: none !important;
@@ -22,7 +23,7 @@
 }
 
 .skel-ui-pluse [data-skel-item][data-loading="true"] {
-  animation: skel-ui-pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+  animation: skel-ui-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
   background-color: var(--skel-ui-color) !important;
 }
 

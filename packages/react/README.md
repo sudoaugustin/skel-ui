@@ -63,7 +63,7 @@ Each `Skel.Item` will have a `data-loading` attribute that is set to `"true"` wh
   width: 5rem;
 }
 
-/* This style will be applied after loading is complete. */
+/* This style will be applied after loading is done. */
 .user-email[data-loading="false"]:hover {
   background: #f97316;
 }

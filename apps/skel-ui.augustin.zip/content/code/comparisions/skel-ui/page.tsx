@@ -10,7 +10,7 @@
 //   return (
 //     <Skel.Root
 //       isLoading
-//       className="flex space-x-4 text-black bg-white border-slate-50 w-full max-w-sm p-2.5 rounded-lg"
+//       className="flex space-x-4 text-black bg-white border-neutral-50 w-full max-w-sm p-2.5 rounded-lg"
 //     >
 //       <Skel.Item as="div" className="size-20 rounded-full overflow-hidden relative loading:rounded-full">
 //         <Image src={user?.avatar as string} alt="" fill className="object-cover" />

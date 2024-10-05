@@ -1,20 +1,19 @@
 ---
 title: Components
-description: Skel UI consists of two components. `Root` manages state and `Item` handles rendering.
+description: Skel UI has two components. The `Root` component manages the loading state, while the `Item` component handles the rendering.
 ---
 
 ## Root
 
-Handles the loading state of all children `Item` using context.
+This component handles the loading state of all child `Item` components.
 
 ```jsx
 import Skel from "@skel-ui/react";
 
-function Demo() {
+function PostCard() {
   return (
     <Skel.Root isLoading={isLoading}>
-      <Skel.Item>...</Skel.Item>
-      <div>....</div>
+      {/* Build your component here */}
     </Skel.Root>
   );
 }
@@ -24,7 +23,7 @@ function Demo() {
 
 | Name        | Type          | Default | Description                          |
 | ----------- | ------------- | ------- | ------------------------------------ |
-| `as`        | `ElementType` | `div`   | HTML tag to render                   |
+| `as`        | `ElementType` | `'div'` | HTML tag to render                   |
 | `isLoading` | `boolean`     | `true`  | Show the loading skeleton if `true`. |
 
 ### Custom tag
@@ -49,7 +48,7 @@ import Skel from "@skel-ui/react";
 function Demo() {
   return (
     <Skel.Root isLoading={isLoading}>
-      <Skel.Item>...</Skel.Item>
+      <Skel.Item>...</Skel.Item> // [!code highlight]
     </Skel.Root>
   );
 }
@@ -59,10 +58,11 @@ function Demo() {
 
 | Name       | Type                             | Default | Description                                  |
 | ---------- | -------------------------------- | ------- | -------------------------------------------- |
-| `as`       | `ElementType`                    | `p`     | HTML tag or React component to render        |
-| `children` | `ReactNode \| (() => ReactNode)` | -       |                                              |
-| `color`    | `string`                         | -       | Overrides the default skeleton color         |
+| `as`       | `ElementType`                    | `'p'`   | HTML tag or React component to render        |
+| `width`    | `string`                         | -       | Width of the skeleton                        |
+| `height`   | `string`                         | -       | Height of the skeleton                       |
 | `radius`   | `string`                         | -       | Overrides the default skeleton border-radius |
+| `children` | `ReactNode \| (() => ReactNode)` | -       |                                              |
 
 ### Custom tag
 
@@ -79,7 +79,7 @@ To render custom HTML tag, please use `as` property.
 
 ### Custom component
 
-When you pass a react component, all of its props are sent to the `Item` component.
+When you pass a component, all of its props can be passed through `Item` component.
 
 ```jsx
 import Image from "next/image";
@@ -121,7 +121,7 @@ function Demo() {
   return (
     <Skel.Root isLoading={isLoading}>
       <Skel.Item>
-        {/* This function get executed only once when loading is complete */}
+        {/* This function get executed only once after loading is done */}
         {() => <IntenseComponent />} // [!code highlight]
       </Skel.Item>
     </Skel.Root>

@@ -3,31 +3,38 @@ title: Rendering List
 description: Skel UI has a built-in utility for generating placeholders, which is very useful for rendering lists.
 ---
 
-<Tabs items={["List.tsx", "useUsers.ts"]}>
+import Portal from "app/Portal";
+import { PostCardList } from "@skel-ui/react/$components";
+
+<Portal>
+  <PostCardList />
+</Portal>
+
+<Tabs items={["PostCardList.tsx", "PostCardList.css"]}>
 
 ```json doc-gen:file
 {
-  "file": "content/code/render-list/List.tsx",
+  "file": "./content/code/PostCardList/index.tsx",
   "codeblock": {
     "lang": "tsx",
-    "meta": "tab=\"List.tsx\""
+    "meta": "tab=\"PostCardList.tsx\""
   }
 }
 ```
 
 ```json doc-gen:file
 {
-  "file": "content/code/render-list/useUsers.ts",
+  "file": "./content/code/PostCardList/index.css",
   "codeblock": {
-    "lang": "ts",
-    "meta": "tab=\"useUsers.ts\""
+    "lang": "css",
+    "meta": "tab=\"PostCardList.css\""
   }
 }
 ```
 
 </Tabs>
 
-## generatePlaceholder
+## `generatePlaceholder`
 
 ```js
 const placeholderUsers = generatePlaceholder(length, primaryKey);

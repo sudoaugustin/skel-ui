@@ -1,21 +1,14 @@
 {
   "name": "@skel-ui/react",
   "author": "https://github.com/sudoaugustin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "description": "Next era of skeleton loading for React",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/esm/index.js",
-  "keywords": [
-    "react",
-    "skeleton",
-    "loading",
-    "placeholder"
-  ],
+  "keywords": ["react", "skeleton", "loading", "placeholder"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -27,7 +20,8 @@
       "import": "./dist/esm/tailwind.js",
       "require": "./dist/cjs/tailwind.js"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./$components": "./stories/components/index.tsx"
   },
   "scripts": {
     "dev": "storybook dev -p 6006 --no-open",
@@ -59,7 +53,6 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "esbuild": "^0.24.0",
-    "hooks": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "^8.3.4",

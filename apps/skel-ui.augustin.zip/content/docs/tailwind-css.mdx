@@ -12,35 +12,37 @@ Add Skel UI plugin to the plugins array of your tailwind config file.
 
 module.exports = {
   plugins: [
-    require("@skel-ui/react/tailwind"), // [!code highlight]
+    require("@skel-ui/react/tailwind")(), // [!code highlight]
   ],
 };
 ```
 
 ## Variants
 
-### `loading`
+### `loading:`
 
-This variant is used to style the element while `isLoading=true`. Useful to define the width and height of the skeleton.
+This variant is used to style the components while loading. Useful to define size of the skeleton and prevent pointer events.
 
-```json doc-gen:file
-{
-  "file": "content/code/tailwind-css/UserProfileLoading.jsx",
-  "codeblock": {
-    "lang": "jsx"
-  }
-}
+```tsx
+// [!code word:loading\:w-32 loading\:h-10]
+// [!code word:loading\:pointer-events-none]
+<Skel.Root className="loading:pointer-events-none">
+  <Skel.Item style="text-lg font-medium loading:w-32 loading:h-10">
+    ...
+  </Skel.Item>
+</Skel.Root>
 ```
 
-### `loaded`
+### `loaded:`
 
-This variant is used to style the element after `isLoading=false`. Useful to define after effects like applying borders and hover effects.
+This variant is used to style the components after loading is done. Useful to define stylings like background and hover effects.
 
-```json doc-gen:file
-{
-  "file": "content/code/tailwind-css/UserProfileLoaded.jsx",
-  "codeblock": {
-    "lang": "jsx"
-  }
-}
+```tsx
+// [!code word:loaded\:bg-blue-400]
+// [!code word:loaded\:border-2 loaded\:hover\:scale-125]
+<Skel.Root className="loaded:bg-blue-400">
+  <Skel.Item style="text-lg font-medium loaded:border-2 loaded:hover:scale-125">
+    ...
+  </Skel.Item>
+</Skel.Root>
 ```

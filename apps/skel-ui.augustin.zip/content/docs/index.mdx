@@ -4,17 +4,17 @@ description: Skel UI resolves the challenges of implementing skeletons by elimin
 ---
 
 import Portal from "app/Portal";
-import PostCard from "content/code/components/PostCard.tsx";
+import { PostCard } from "@skel-ui/react/$components";
 
-## Installation
+## Install package
 
-Install the package into your project via command line.
+Install Skel UI into your project via command line.
 
 ```package-install
 @skel-ui/react
 ```
 
-## Importing CSS
+## Import CSS
 
 Import the CSS file into the root of your application.
 
@@ -22,46 +22,36 @@ Import the CSS file into the root of your application.
 import "@skel-ui/react/styles.css";
 ```
 
-## Start crafting UI
+## Start crafting
 
-Now you are ready to develop your UI.
+Now it's time for you to craft your user interface to life!
 
 <Portal>
   <PostCard />
 </Portal>
 
+<Tabs items={["PostCard.tsx", "PostCard.css"]}>
+
 ```json doc-gen:file
 {
-  "file": "content/code/components/PostCard.tsx",
+  "file": "./content/code/PostCard/index.tsx",
   "codeblock": {
-    "lang": "tsx"
+    "lang": "tsx",
+    "meta": "tab=\"PostCard.tsx\""
   }
 }
 ```
 
-Now, not only have you designed the skeleton, but you have also done the actual UI. Additionally, the loading state for the entire UI is handled in a single place at the `<Skel.Root>` .
-
-## Customization
-
-Customize the default color and border-radius of skeleton using css variables.
-
-```css title="global.css"
-:root {
-  --skel-ui-color: #cbd5e1;
-  --skel-ui-radius: 0.5rem;
+```json doc-gen:file
+{
+  "file": "./content/code/PostCard/index.css",
+  "codeblock": {
+    "lang": "css",
+    "meta": "tab=\"PostCard.css\""
+  }
 }
 ```
 
-Each `Skel.Item` will have a `data-loading` attribute that is set to `"true"` when the item is in a loading state, and `"false"` otherwise. You can use this attribute in your CSS to create styles based on the loading state.
+</Tabs>
 
-```css
-/* This style will be applied during loading. */
-.user-email[data-loading="true"] {
-  width: 5rem;
-}
-
-/* This style will be applied after loading is complete. */
-.user-email[data-loading="false"]:hover {
-  background: #f97316;
-}
-```
+Now, not only have you designed the skeleton, but you have also done the actual UI. Additionally, the loading state for the entire UI is handled in a single place at `<Skel.Root>`.

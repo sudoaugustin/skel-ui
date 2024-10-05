@@ -1,9 +1,9 @@
-import $posts from "@repo/data/posts.json";
-import $users from "@repo/data/users.json";
+import $posts from "../data/posts.json";
+import $users from "../data/users.json";
 import useMockFetch from "./useMockFetch";
 
 export function usePost() {
-  const { state, isLoading } = useMockFetch($posts.find((post) => post.postId === 101));
+  const { state, isLoading } = useMockFetch($posts.find((post) => post.postId === 116));
 
   return { post: state, isLoading };
 }
