@@ -13,6 +13,6 @@ folders.forEach((folder) => {
       .replace("../../hooks", "hooks")
       .replace("../../../src", "@skel-ui/react");
 
-    jetpack.write(`./content/code/${folder}/${file}`, content);
+    jetpack.write(`./codes/${folder}/${file}`, content);
   });
 });
