@@ -24,7 +24,7 @@ Now you are ready to develop your UI.
 
 ```jsx
 import Skel from "@skel-ui/react";
-import Image from "next/Image";
+import Image from "next/image";
 
 function Profile() {
   const { user, isLoading } = useProfile();
