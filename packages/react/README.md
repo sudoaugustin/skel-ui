@@ -1,6 +1,6 @@
 # Getting Started
 
-Skel UI resolves the challenges of implementing skeletons by eliminating the need to create dedicated loading screens and providing an easier way to manage skeleton states using react-context. Learn more [here](https://skel-ui.augustin.zip).
+Skel UI resolves the challenges of implementing skeletons by eliminating the need to create dedicated loading screens and providing an easier way to manage skeleton states using react-context.
 
 ## Installation
 
@@ -20,7 +20,7 @@ import "@skel-ui/react/styles.css";
 
 ## Start crafting UI
 
-Now you are ready to develop your UI.
+Now it's time for you to craft your user interface to life!
 
 ```jsx
 import Skel from "@skel-ui/react";
@@ -50,8 +50,9 @@ Customize the default color and border-radius of skeleton using css variables.
 
 ```css title="global.css"
 :root {
-  --skel-ui-color1: #cbd5e1;
-  --skel-ui-radius: 0.5rem;
+    --skel-ui-color1: #a1a1aa;
+    --skel-ui-color2: #e4e4e7;
+    --skel-ui-radius: 0.25rem;
 }
 ```
 
