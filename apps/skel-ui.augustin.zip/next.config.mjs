@@ -4,7 +4,7 @@ const withMDX = createMDX();
 
 /** @type {import('next').NextConfig} */
 const config = {
-  images: { remotePatterns: [{ hostname: "plus.unsplash.com" }] },
+  images: { remotePatterns: [{ hostname: "images.unsplash.com" }] },
   reactStrictMode: true,
 };
 

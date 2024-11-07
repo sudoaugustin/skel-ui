@@ -50,7 +50,7 @@ Customize the default color and border-radius of skeleton using css variables.
 
 ```css title="global.css"
 :root {
-  --skel-ui-color: #cbd5e1;
+  --skel-ui-color1: #cbd5e1;
   --skel-ui-radius: 0.5rem;
 }
 ```

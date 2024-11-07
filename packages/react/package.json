@@ -1,14 +1,21 @@
 {
   "name": "@skel-ui/react",
   "author": "https://github.com/sudoaugustin",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "license": "MIT",
   "description": "Next era of skeleton loading for React",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/esm/index.js",
-  "keywords": ["react", "skeleton", "loading", "placeholder"],
+  "keywords": [
+    "react",
+    "skeleton",
+    "loading",
+    "placeholder"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
