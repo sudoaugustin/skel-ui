@@ -1,49 +1,49 @@
 :root {
-  --skel-ui-color: #cbd5e1;
-  --skel-ui-shimmer: #f1f0f0;
-  --skel-ui-radius: 0.25rem;
+    --skel-ui-color1: #cbd5e1;
+    --skel-ui-color2: #f1f0f0;
+    --skel-ui-radius: 0.25rem;
 }
 
 [data-skel-item][data-loading="true"] {
-  animation: skel-ui-shimmer 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
-  background: linear-gradient(
-    to right,
-    var(--skel-ui-color) 33%,
-    var(--skel-ui-shimmer),
-    var(--skel-ui-color) 66%
-  );
-  background-size: 300%;
+    animation: skel-ui-shimmer 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+    background: linear-gradient(
+        to right,
+        var(--skel-ui-color1) 33%,
+        var(--skel-ui-color2),
+        var(--skel-ui-color1) 66%
+    );
+    background-size: 300%;
 
-  width: var(--skel-ui-width);
-  height: var(--skel-ui-height);
-  border-radius: var(--skel-ui-radius);
-  cursor: default !important;
-  user-select: none !important;
-  pointer-events: none !important;
+    width: var(--skel-ui-width);
+    height: var(--skel-ui-height);
+    border-radius: var(--skel-ui-radius);
+    cursor: default !important;
+    user-select: none !important;
+    pointer-events: none !important;
 }
 
-.skel-ui-pluse [data-skel-item][data-loading="true"] {
-  animation: skel-ui-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
-  background-color: var(--skel-ui-color) !important;
+.skel-ui-pulse [data-skel-item][data-loading="true"] {
+    animation: skel-ui-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+    background-color: var(--skel-ui-color1) !important;
 }
 
 @keyframes skel-ui-pulse {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.25;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes skel-ui-shimmer {
-  0% {
-    background-position: 100%;
-  }
-  100% {
-    background-position: 0%;
-  }
+    0% {
+        background-position: 100%;
+    }
+    100% {
+        background-position: 0%;
+    }
 }

@@ -1,19 +1,14 @@
 import { DocsLayout } from "fumadocs-ui/layout";
 import { RootProvider } from "fumadocs-ui/provider";
-import { DM_Mono } from "next/font/google";
+import { DM_Mono, DM_Sans, Manrope } from "next/font/google";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import "@skel-ui/react/styles.css";
 import "./global.css";
 import { source } from "./source";
 
-const sans = localFont({
-  src: "./ClashGrotesk-Variable.woff2",
-  display: "swap",
-  variable: "--font-sans",
-});
-
-const mono = DM_Mono({ subsets: ["latin"], weight: "400", variable: "--font-mono" });
+const sans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const mono = DM_Mono({ subsets: ["latin"], variable: "--font-mono", weight: "400" });
 
 function Logo() {
   return (

@@ -18,9 +18,10 @@
     "next": "^14.2.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwindcss-shorthand": "^1.0.2"
+    "tailwindcss-shorthand": "^1.0.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.2",
     "@types/mdx": "^2.0.13",
     "@types/node": "22.5.4",
     "@types/react": "^18.3.5",

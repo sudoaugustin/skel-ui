@@ -22,7 +22,7 @@ function Root<T extends React.ElementType = "div">({ as, isLoading = true, child
   const Component = as || "div";
   return (
     <IsLoadingContext.Provider value={isLoading}>
-      <Component {...rest} data-loading={isLoading}>
+      <Component {...rest} aria-hidden={isLoading} data-loading={isLoading}>
         {children}
       </Component>
     </IsLoadingContext.Provider>
@@ -45,6 +45,7 @@ function Item<T extends React.ElementType = "p">({ as, sw, sh, color, radius, ch
           "--skel-ui-radius": radius,
         } as React.CSSProperties
       }
+      aria-hidden={isLoading}
       data-loading={isLoading}
       data-skel-item
     >

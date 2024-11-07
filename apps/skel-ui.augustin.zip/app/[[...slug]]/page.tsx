@@ -18,9 +18,9 @@ export default async function Page({ params }: Props) {
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
-      <DocsTitle className="font-medium">{page.data.title}</DocsTitle>
+      <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
-      <DocsBody className="prose-headings:font-medium">
+      <DocsBody>
         <MDX components={{ ...defaultMdxComponents, Tab, Tabs }} />
       </DocsBody>
     </DocsPage>
