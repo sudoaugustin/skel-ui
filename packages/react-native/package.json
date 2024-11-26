@@ -1,0 +1,49 @@
+{
+  "name": "@skel-ui/react-native",
+  "author": "https://github.com/sudoaugustin",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Next era of skeleton loading for React Native",
+  "files": ["dist"],
+  "main": "dist/cjs/index.js",
+  "types": "dist/src/index.d.ts",
+  "module": "dist/esm/index.js",
+  "keywords": ["react", "native", "skeleton", "loading", "placeholder"],
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && pnpm build:dts && pnpm build:esm && pnpm build:cjs",
+    "build:dts": "tsc -p tsconfig.build.json --outDir dist",
+    "build:esm": "esbuild src/*.ts* --bundle --format=esm --outdir=dist/esm --external:react --external:@radix-ui/* --external:react-native",
+    "build:cjs": "esbuild src/*.ts* --bundle --format=cjs --outdir=dist/cjs --external:react --external:@radix-ui/* --external:react-native"
+  },
+  "bugs": {
+    "url": "https://github.com/sudoaugustin/skel-ui/issues"
+  },
+  "homepage": "https://skel-ui.augustin.zip",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudoaugustin/skel-ui"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0"
+  },
+  "devDependencies": {
+    "@skel-ui/core": "workspace:*",
+    "@types/react": "^18.3.12",
+    "esbuild": "^0.24.0",
+    "react": "^18.3.1",
+    "react-native": "0.76.3",
+    "typescript": "^5.6.2"
+  },
+  "peerDependencies": {
+    "react": "^17.0 || ^18.0",
+    "react-native": "*",
+    "@radix-ui/react-slot": "^1.0"
+  }
+}

@@ -11,7 +11,7 @@ folders.forEach((folder) => {
     if (content) {
       content
         .replace("../Image", "@ui/Image")
-        .replace("../../hooks", "hooks")
+        .replace("commons-utils/hooks", "hooks")
         .replace("../../../src", "@skel-ui/react")
         .replace(
           `

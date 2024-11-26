@@ -1,5 +1,5 @@
+import { useUserById } from "commons-utils/hooks";
 import Skel from "../../../src";
-import { usePosts, useUserById } from "../../hooks";
 import Image from "../Image";
 import PostCardList from "../PostCardList";
 
@@ -18,12 +18,8 @@ export default function PostCardNested() {
             radius="50%"
             className="size-24 rounded-full loaded:ring ring-white object-cover"
           />
-          <Skel.Item className="text-lg font-bold mt-5 mb-1 loading:max-w-60">
-            {user?.name}
-          </Skel.Item>
-          <Skel.Item className="text-sm font-medium loading:max-w-32">
-            {user?.email}
-          </Skel.Item>
+          <Skel.Item className="text-lg font-bold mt-5 mb-1 loading:max-w-60">{user?.name}</Skel.Item>
+          <Skel.Item className="text-sm font-medium loading:max-w-32">{user?.email}</Skel.Item>
         </div>
       </div>
       <div>

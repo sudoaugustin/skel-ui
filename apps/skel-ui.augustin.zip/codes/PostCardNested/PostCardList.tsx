@@ -1,5 +1,5 @@
+import { usePosts } from "commons-utils/hooks";
 import Skel, { generatePlaceholder } from "../../../src";
-import { usePosts } from "../../hooks";
 import Image from "../Image";
 
 type Props = {
@@ -7,19 +7,13 @@ type Props = {
 };
 
 export default function PostCardList({ userId }: Props) {
-  const { posts = generatePlaceholder(4, "postId"), isLoading } =
-    usePosts(userId);
+  const { posts = generatePlaceholder(4, "postId"), isLoading } = usePosts(userId);
 
   return (
     <Skel.Root isLoading={isLoading} className="list">
       {posts.map((post) => (
         <div key={post.postId} className="card">
-          <Skel.Item
-            as={Image}
-            src={post.image as string}
-            radius="0.5rem"
-            className="card-image"
-          />
+          <Skel.Item as={Image} src={post.image as string} radius="0.5rem" className="card-image" />
 
           <Skel.Item as="h1" sw="65%" className="card-title">
             {post.title}

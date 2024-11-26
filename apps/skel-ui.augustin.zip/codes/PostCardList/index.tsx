@@ -1,7 +1,7 @@
 // [!code word:generatePlaceholder]
 
+import { usePosts } from "commons-utils/hooks";
 import Skel, { generatePlaceholder } from "../../../src";
-import { usePosts } from "../../hooks";
 import Image from "../Image";
 
 export default function PostCardList() {

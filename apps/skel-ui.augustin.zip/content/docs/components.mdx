@@ -21,14 +21,15 @@ function PostCard() {
 
 ### Props
 
-| Name        | Type          | Default | Description                          |
-| ----------- | ------------- | ------- | ------------------------------------ |
-| `as`        | `ElementType` | `'div'` | HTML tag to render                   |
-| `isLoading` | `boolean`     | `true`  | Show the loading skeleton if `true`. |
+| Name        | Type          | Default | Description                         |
+| ----------- | ------------- | ------- | ----------------------------------  |
+| `as`        | `ElementType` | `'div'` | Custom element to render            |
+| `asChild`   | `boolean`     | `false` | Alternative for `as`                |
+| `isLoading` | `boolean`     | `true`  | Show the loading skeleton if `true` |
 
-### Custom tag
+### Custom element with `as`
 
-To render custom HTML tag, please use `as` property.
+To render custom element, please use `as` property.
 
 ```jsx
 <Skel.Root
@@ -37,6 +38,21 @@ To render custom HTML tag, please use `as` property.
   ...
 </Skel.Root>
 ```
+
+### Custom element with `asChild`
+
+Render its immediate child and merge their props.
+
+```jsx
+<Skel.Root
+  asChild={true} // [!code highlight]
+>
+  <ul> // [!code highlight]
+    ... // [!code highlight]
+  </ul> // [!code highlight]
+</Skel.Root>
+```
+
 
 ## Item
 
@@ -58,15 +74,16 @@ function Demo() {
 
 | Name       | Type                             | Default | Description                                  |
 | ---------- | -------------------------------- | ------- | -------------------------------------------- |
-| `as`       | `ElementType`                    | `'p'`   | HTML tag or React component to render        |
+| `as`       | `ElementType`                    | `'p'`   | Custom element to render                     |
+| `asChild`  | `boolean`                        | `false` | Alternative for `as`                         |
 | `sw`       | `string`                         | -       | Width of the skeleton                        |
 | `sh`       | `string`                         | -       | Height of the skeleton                       |
 | `radius`   | `string`                         | -       | Overrides the default skeleton border-radius |
 | `children` | `ReactNode \| (() => ReactNode)` | -       |                                              |
 
-### Custom tag
+### Custom element with `as`
 
-To render custom HTML tag, please use `as` property.
+To render custom element, please use `as` property.
 
 ```jsx
 <Skel.Item
@@ -77,8 +94,6 @@ To render custom HTML tag, please use `as` property.
 </Skel.Item>
 ```
 
-### Custom component
-
 When you pass a component, all of its props can be passed through `Item` component.
 
 ```jsx
@@ -88,11 +103,24 @@ import Image from "next/image";
   as={Image}
   src="..." // [!code highlight]
   quality={85} // [!code highlight]
-  className="....."
 />;
 ```
 
 _Note: If you pass a react component into `as`, Skel UI will render a empty `div` instead of that component while loading to avoid unexpected bahaviours._
+
+### Custom element with `asChild`
+
+Render its immediate child and merge their props.
+
+```jsx
+import Image from "next/image";
+
+<Skel.Item
+  asChild={true} // [!code highlight]
+>
+  <Image src="..." quality={85}/> // [!code highlight]
+</Skel.Root>
+```
 
 ### Function as children
 

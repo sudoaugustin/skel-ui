@@ -1,5 +1,5 @@
+import { usePost } from "commons-utils/hooks";
 import Skel from "../../../src";
-import { usePost } from "../../hooks";
 import Image from "../Image";
 
 type Props = {

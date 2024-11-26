@@ -1,76 +1,160 @@
+import { createSkelItem, createSkelRoot, generatePlaceholder, SkelItemProps } from "@skel-ui/core";
 import React from "react";
 
-type HTMLProps<T extends React.ElementType> = Omit<React.ComponentPropsWithoutRef<T>, "children">;
+const tags = [
+  "a",
+  "address",
+  "article",
+  "aside",
+  "b",
+  "bdi",
+  "bdo",
+  "blockquote",
+  "button",
+  "canvas",
+  "caption",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "data",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "footer",
+  "form",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "header",
+  "hgroup",
+  "hr",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "main",
+  "map",
+  "mark",
+  "menu",
+  "menuitem",
+  "meter",
+  "nav",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "picture",
+  "pre",
+  "progress",
+  "q",
+  "rp",
+  "rt",
+  "ruby",
+  "s",
+  "samp",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strong",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "tr",
+  "track",
+  "u",
+  "ul",
+  "video",
+  "wbr",
+  "webview",
+] as const;
 
-type RootProps<T extends React.ElementType = "div"> = {
-  as?: T;
-  children: React.ReactNode;
-  isLoading: boolean;
-} & HTMLProps<T>;
+const voidTags = ["br", "hr", "img", "wbr", "embed", "input"];
 
-type ItemProps<T extends React.ElementType = "p"> = {
-  as?: T;
-  sw?: string;
-  sh?: string;
-  radius?: string;
-  children?: React.ReactNode | (() => React.ReactNode);
-} & HTMLProps<T>;
+type TElements = {
+  [K in (typeof tags)[number]]: React.FunctionComponent<SkelItemProps<K>>;
+};
 
-const IsLoadingContext = React.createContext(false);
+const $createSkelItem = createSkelItem();
 
-function Root<T extends React.ElementType = "div">({ as, isLoading = true, children, ...rest }: RootProps<T>) {
-  const Component = as || "div";
-  return (
-    <IsLoadingContext.Provider value={isLoading}>
-      <Component {...rest} aria-hidden={isLoading} data-loading={isLoading}>
-        {children}
-      </Component>
-    </IsLoadingContext.Provider>
-  );
-}
-
-function Item<T extends React.ElementType = "p">({ as, sw, sh, color, radius, children, ...rest }: ItemProps<T>) {
-  const isLoading = React.useContext(IsLoadingContext);
-  const component = as || "p";
-  const Component = typeof component === "string" ? component : isLoading ? "div" : component;
-
-  return (
-    <Component
-      {...rest}
-      style={
-        {
-          ...rest.style,
-          "--skel-ui-width": sw,
-          "--skel-ui-height": sh,
-          "--skel-ui-radius": radius,
-        } as React.CSSProperties
-      }
-      aria-hidden={isLoading}
-      data-loading={isLoading}
-      data-skel-item
-    >
-      {isLoading ? " ‌ " : typeof children === "function" ? children() : children}
-    </Component>
-  );
-}
-
-// function generateString(children: unknown) {
-//   const str =
-//     typeof children === "object" || typeof children === "function"
-//       ? "        "
-//       : typeof children === "string"
-//         ? children.replace(/undefined/g, " ")
-//         : `${children}`;
-
-//   return str.replace(/./g, " ‌ ");
+// function Root<T extends React.ElementType = "div">({ as, children, isLoading = true, ...rest }: SkelRootProps<T>) {
+//   const Component = as || "div";
+//   return (
+//     <IsLoadingProvider value={isLoading}>
+//       <Component {...rest} aria-hidden={isLoading} data-loading={isLoading}>
+//         {children}
+//       </Component>
+//     </IsLoadingProvider>
+//   );
 // }
 
-export function generatePlaceholder<T = { [k: string]: unknown }>(length: number, primary: string) {
-  return Array(length)
-    .fill(null)
-    .map((_, index) => ({ [primary]: `skel-ui-id-${index}` }) as T);
+// function Item<T extends React.ElementType = "p">({ as, sw, sh, radius, asChild, children, ...rest }: ItemProps<T>) {
+//   const isLoading = useIsLoading();
+//   const component = as || "p";
+//   const Component = asChild ? Slot : typeof component === "string" ? component : isLoading ? "div" : component;
+
+//   return (
+//     <Component
+//       {...rest}
+//       style={
+//         {
+//           ...rest.style,
+//           "--skel-ui-width": sw,
+//           "--skel-ui-height": sh,
+//           "--skel-ui-radius": radius,
+//         } as React.CSSProperties
+//       }
+//       aria-hidden={isLoading}
+//       data-loading={isLoading}
+//       data-skel-item
+//     >
+//       {isLoading && !asChild ? " ‌ " : typeof children === "function" ? children() : children}
+//     </Component>
+//   );
+// }
+
+function SkelItem<T extends React.ElementType>({ as, ...rest }: { as: T } & SkelItemProps<T>) {
+  return $createSkelItem(as, false, "div")(rest as never);
 }
 
-const Skel = { Root, Item };
+const Skel = {
+  Root: createSkelRoot("div"),
+  Item: SkelItem,
+  // HTML Native Elements
+  ...(tags.reduce((eles, tag) => ({ ...eles, [tag]: $createSkelItem(tag, voidTags.includes(tag)) }), {}) as TElements),
+};
 
 export default Skel;
+export { generatePlaceholder };
