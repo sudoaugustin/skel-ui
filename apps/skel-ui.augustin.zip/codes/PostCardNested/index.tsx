@@ -1,5 +1,5 @@
 import { useUserById } from "commons-utils/hooks";
-import Skel from "../../../src";
+import * as Skel from "../../../src";
 import Image from "../Image";
 import PostCardList from "../PostCardList";
 

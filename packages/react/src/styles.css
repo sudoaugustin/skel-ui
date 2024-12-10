@@ -1,37 +1,34 @@
+/* To make the <Skel.Provider> optional */
 :root {
   --skel-ui-color1: #cbd5e1;
   --skel-ui-color2: #f1f0f0;
   --skel-ui-radius: 0.25rem;
+  --skel-ui-animation-easing: cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-[data-skel-item][data-loading="true"] {
-  animation: skel-ui-shimmer 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
-  background: linear-gradient(to right, var(--skel-ui-color1) 33%, var(--skel-ui-color2), var(--skel-ui-color1) 66%);
+[aria-hidden="true"][data-loading="true"] {
+  animation: skel-ui-shimmer var(--skel-ui-animation-duration, 2s) var(--skel-ui-animation-easing) infinite !important;
+  background-image: linear-gradient(
+    to right,
+    var(--skel-ui-color1) 33%,
+    var(--skel-ui-color2),
+    var(--skel-ui-color1) 66%
+  );
   background-size: 300%;
-  width: var(--skel-ui-width);
-  height: var(--skel-ui-height);
-  border-radius: var(--skel-ui-radius);
-  /* Forced stylings */
-  color: transparent !important;
-  cursor: default !important;
-  user-select: none !important;
-  pointer-events: none !important;
 }
 
-.skel-ui-pulse [data-skel-item][data-loading="true"] {
-  animation: skel-ui-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
-  background-color: var(--skel-ui-color1) !important;
+.skel-ui-pulse [aria-hidden="true"][data-loading="true"] {
+  animation: skel-ui-pulse var(--skel-ui-animation-duration, 1s) var(--skel-ui-animation-easing) infinite
+    alternate-reverse !important;
+  background-color: var(--skel-ui-color1);
 }
 
 @keyframes skel-ui-pulse {
   0% {
     opacity: 1;
   }
-  50% {
-    opacity: 0.25;
-  }
   100% {
-    opacity: 1;
+    opacity: 0.35;
   }
 }
 

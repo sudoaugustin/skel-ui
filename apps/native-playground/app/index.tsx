@@ -1,19 +1,47 @@
-import Skel from "@skel-ui/react-native";
+import Button from "@/component/Button";
+import * as Skel from "@skel-ui/react-native/src";
 import { usePost } from "commons-utils/hooks";
 import React from "react";
-import { Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export default function IndexPage() {
   const { post, isLoading } = usePost();
 
   return (
-    <Skel.Root isLoading={isLoading !== undefined ? isLoading : isLoading} className="card">
-      <Skel.Item as={Image} src={post?.image as string} radius="0.5rem" className="card-image" />
-      <Skel.Item sw="65%">{post?.title}</Skel.Item>
-      <Skel.Item sh="4rem">{post?.description}</Skel.Item>
-      <Skel.Item sw="35%">
-        {post?.viewsCount} Views • {post?.likesCount} Likes
-      </Skel.Item>
+    <Skel.Root isLoading={true}>
+      <View style={styles.card}>
+        <Skel.Image src={post?.image} style={styles.cardImage} />
+        <Skel.Text sw="65%" style={styles.cardTitle}>
+          {post?.title}
+        </Skel.Text>
+        <Skel.Text numberOfLines={3} style={styles.cardDescription}>
+          {post?.description}
+        </Skel.Text>
+        <Button label="Like" />
+      </View>
     </Skel.Root>
   );
 }
+
+const styles = StyleSheet.create({
+  card: {
+    width: 320,
+    padding: 10,
+    marginHorizontal: "auto",
+    borderWidth: 1,
+    borderColor: "#e2e8f0",
+    borderRadius: 8,
+  },
+  cardImage: { borderRadius: 4, aspectRatio: 800 / 530 },
+  cardTitle: { marginTop: 16, marginBottom: 8, fontSize: 24, lineHeight: 28, fontWeight: 800 },
+  cardDescription: { fontSize: 14, lineHeight: 20 },
+  cardLikePressable: {
+    height: 40,
+    borderRadius: 10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#0284c7",
+    marginTop: 12,
+  },
+});

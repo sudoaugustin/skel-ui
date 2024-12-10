@@ -6,17 +6,22 @@
   "description": "Next era of skeleton loading for React",
   "files": ["dist"],
   "main": "dist/cjs/index.js",
-  "types": "dist/src/index.d.ts",
+  "types": "dist/index.d.ts",
   "module": "dist/esm/index.js",
   "keywords": ["react", "skeleton", "loading", "placeholder"],
   "exports": {
     ".": {
-      "types": "./dist/src/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/esm/utils.js",
+      "require": "./dist/cjs/utils.js"
+    },
     "./tailwind": {
-      "types": "./dist/src/tailwind.d.ts",
+      "types": "./dist/tailwind.d.ts",
       "import": "./dist/esm/tailwind.js",
       "require": "./dist/cjs/tailwind.js"
     },
@@ -26,10 +31,10 @@
   "scripts": {
     "dev": "storybook dev -p 6006 --no-open",
     "build": "rm -rf dist && pnpm build:dts && pnpm build:css && pnpm build:esm && pnpm build:cjs",
-    "build:dts": "tsc -p tsconfig.build.json --outDir dist",
+    "build:dts": "tsc -p tsconfig.json --outDir dist --emitDeclarationOnly",
     "build:css": "esbuild src/styles.css --outdir=dist",
-    "build:esm": "esbuild src/*.ts* --bundle --format=esm --outdir=dist/esm --external:react --external:@radix-ui/* --external:tailwindcss",
-    "build:cjs": "esbuild src/*.ts* --bundle --format=cjs --outdir=dist/cjs --external:react --external:@radix-ui/* --external:tailwindcss"
+    "build:esm": "esbuild src/*.ts* --format=esm --outdir=dist/esm",
+    "build:cjs": "esbuild src/*.ts* --format=cjs --outdir=dist/cjs"
   },
   "bugs": {
     "url": "https://github.com/sudoaugustin/skel-ui/issues"
@@ -39,12 +44,9 @@
     "type": "git",
     "url": "git+https://github.com/sudoaugustin/skel-ui"
   },
-  "dependencies": {
-    "@radix-ui/react-slot": "^1.1.0"
-  },
   "devDependencies": {
-    "@skel-ui/core": "workspace:*",
     "@chromatic-com/storybook": "^1.9.0",
+    "@skel-ui/core": "workspace:*",
     "@storybook/addon-essentials": "^8.3.4",
     "@storybook/addon-interactions": "^8.3.4",
     "@storybook/addon-links": "^8.3.4",
@@ -54,16 +56,18 @@
     "@storybook/react-vite": "^8.3.4",
     "@storybook/test": "^8.3.4",
     "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.2.0",
+    "@types/react-dom": "^18.3.1",
+    "commons-tsconfig": "workspace:*",
     "commons-utils": "workspace:*",
     "esbuild": "^0.24.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "^8.3.4",
     "tailwindcss": "^3.4.13",
-    "typescript": "^5.6.2"
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
+    "@skel-ui/core": "workspace:*",
     "react": "^17.0 || ^18.0",
     "react-dom": "^17.0 || ^18.0"
   }

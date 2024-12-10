@@ -23,7 +23,7 @@ import "@skel-ui/react/styles.css";
 Now it's time for you to craft your user interface to life!
 
 ```jsx
-import Skel from "@skel-ui/react";
+import * as Skel from "@skel-ui/react";
 import Image from "next/image";
 
 function Profile() {

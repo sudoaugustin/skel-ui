@@ -1,5 +1,5 @@
 import { usePosts } from "commons-utils/hooks";
-import Skel, { generatePlaceholder } from "../../../src";
+import *  Skel from "../../../src"; import { generatePlaceholder } from "../../../src/utils";
 import Image from "../Image";
 
 type Props = {

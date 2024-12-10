@@ -7,7 +7,9 @@ on:
         type: choice
         description: Which package to release
         options:
+          - core
           - react
+          - react-native
 
 jobs:
   publish:

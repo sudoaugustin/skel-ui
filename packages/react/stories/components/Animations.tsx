@@ -1,6 +1,6 @@
-import PostCard from "../PostCard";
+import PostCard from "./PostCard";
 
-export default function PostCardAnimations() {
+export default function Animations() {
   return (
     <div className="flex w-full max-w-2xl mx-auto justify-between">
       <div className="skel-ui-pulse flex flex-1 flex-center">

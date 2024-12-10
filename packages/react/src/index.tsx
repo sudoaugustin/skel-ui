@@ -1,160 +1,148 @@
-import { createSkelItem, createSkelRoot, generatePlaceholder, SkelItemProps } from "@skel-ui/core";
+"use client";
+import { IsLoadingContext, SkelComponentProps, SkelRoot } from "@skel-ui/core";
+import type { ComponentProps, ComponentType, ElementType } from "react";
 import React from "react";
 
-const tags = [
-  "a",
-  "address",
-  "article",
-  "aside",
-  "b",
-  "bdi",
-  "bdo",
-  "blockquote",
-  "button",
-  "canvas",
-  "caption",
-  "cite",
-  "code",
-  "col",
-  "colgroup",
-  "data",
-  "datalist",
-  "dd",
-  "del",
-  "details",
-  "dfn",
-  "dialog",
-  "div",
-  "dl",
-  "dt",
-  "em",
-  "embed",
-  "fieldset",
-  "figcaption",
-  "figure",
-  "footer",
-  "form",
-  "h1",
-  "h2",
-  "h3",
-  "h4",
-  "h5",
-  "h6",
-  "header",
-  "hgroup",
-  "hr",
-  "i",
-  "iframe",
-  "img",
-  "input",
-  "ins",
-  "kbd",
-  "label",
-  "legend",
-  "li",
-  "main",
-  "map",
-  "mark",
-  "menu",
-  "menuitem",
-  "meter",
-  "nav",
-  "object",
-  "ol",
-  "optgroup",
-  "option",
-  "output",
-  "p",
-  "param",
-  "picture",
-  "pre",
-  "progress",
-  "q",
-  "rp",
-  "rt",
-  "ruby",
-  "s",
-  "samp",
-  "section",
-  "select",
-  "small",
-  "source",
-  "span",
-  "strong",
-  "sub",
-  "summary",
-  "sup",
-  "table",
-  "tbody",
-  "td",
-  "textarea",
-  "tfoot",
-  "th",
-  "thead",
-  "time",
-  "tr",
-  "track",
-  "u",
-  "ul",
-  "video",
-  "wbr",
-  "webview",
-] as const;
+type SkelCustomProps<T extends ComponentType<ComponentProps<T>>> = { as: T } & ComponentProps<T> &
+  Pick<SkelComponentProps<T>, "sw" | "sh" | "sr">;
 
-const voidTags = ["br", "hr", "img", "wbr", "embed", "input"];
+function createSkelComponent<T extends ElementType>(type: T, isVoidTag = false) {
+  return ({ sw, sh, sr, style, children, ...props }: SkelComponentProps<T>) => {
+    const isLoading = React.useContext(IsLoadingContext);
 
-type TElements = {
-  [K in (typeof tags)[number]]: React.FunctionComponent<SkelItemProps<K>>;
-};
+    const loadingStyle = isLoading
+      ? {
+          width: sw,
+          height: sh,
+          borderRadius: sr || "var(--skel-ui-radius)",
+          color: "transparent",
+          cursor: "default",
+          userSelect: "none",
+          pointerEvents: "none",
+        }
+      : {};
 
-const $createSkelItem = createSkelItem();
-
-// function Root<T extends React.ElementType = "div">({ as, children, isLoading = true, ...rest }: SkelRootProps<T>) {
-//   const Component = as || "div";
-//   return (
-//     <IsLoadingProvider value={isLoading}>
-//       <Component {...rest} aria-hidden={isLoading} data-loading={isLoading}>
-//         {children}
-//       </Component>
-//     </IsLoadingProvider>
-//   );
-// }
-
-// function Item<T extends React.ElementType = "p">({ as, sw, sh, radius, asChild, children, ...rest }: ItemProps<T>) {
-//   const isLoading = useIsLoading();
-//   const component = as || "p";
-//   const Component = asChild ? Slot : typeof component === "string" ? component : isLoading ? "div" : component;
-
-//   return (
-//     <Component
-//       {...rest}
-//       style={
-//         {
-//           ...rest.style,
-//           "--skel-ui-width": sw,
-//           "--skel-ui-height": sh,
-//           "--skel-ui-radius": radius,
-//         } as React.CSSProperties
-//       }
-//       aria-hidden={isLoading}
-//       data-loading={isLoading}
-//       data-skel-item
-//     >
-//       {isLoading && !asChild ? " ‌ " : typeof children === "function" ? children() : children}
-//     </Component>
-//   );
-// }
-
-function SkelItem<T extends React.ElementType>({ as, ...rest }: { as: T } & SkelItemProps<T>) {
-  return $createSkelItem(as, false, "div")(rest as never);
+    return React.createElement(
+      type,
+      {
+        ...props,
+        style: { ...style, ...loadingStyle },
+        "aria-hidden": isLoading,
+        "data-loading": isLoading,
+        // Use base64 transparent image while loading to avoid broken image ui. This doesn't trigger error on other media tags.
+        ...(isLoading && "src" in props && props.src === undefined
+          ? {
+              src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAgEB/6mZBQAAAABJRU5ErkJggg==",
+            }
+          : {}),
+      },
+      isVoidTag ? undefined : isLoading && typeof type === "string" ? " ‌ " : children,
+    );
+  };
 }
 
-const Skel = {
-  Root: createSkelRoot("div"),
-  Item: SkelItem,
-  // HTML Native Elements
-  ...(tags.reduce((eles, tag) => ({ ...eles, [tag]: $createSkelItem(tag, voidTags.includes(tag)) }), {}) as TElements),
-};
+function SkelCustom<T extends ComponentType<ComponentProps<T>>>({ as, ...rest }: SkelCustomProps<T>) {
+  return createSkelComponent(as)(rest as never);
+}
 
-export default Skel;
-export { generatePlaceholder };
+export const Root = SkelRoot;
+export const Custom = SkelCustom;
+
+export const a = createSkelComponent("a");
+export const address = createSkelComponent("address");
+export const article = createSkelComponent("article");
+export const aside = createSkelComponent("aside");
+export const b = createSkelComponent("b");
+export const br = createSkelComponent("br", true);
+export const bdi = createSkelComponent("bdi");
+export const bdo = createSkelComponent("bdo");
+export const blockquote = createSkelComponent("blockquote");
+export const button = createSkelComponent("button");
+export const canvas = createSkelComponent("canvas");
+export const caption = createSkelComponent("caption");
+export const cite = createSkelComponent("cite");
+export const code = createSkelComponent("code");
+export const col = createSkelComponent("col");
+export const colgroup = createSkelComponent("colgroup");
+export const data = createSkelComponent("data");
+export const datalist = createSkelComponent("datalist");
+export const dd = createSkelComponent("dd");
+export const del = createSkelComponent("del");
+export const details = createSkelComponent("details");
+export const dfn = createSkelComponent("dfn");
+export const dialog = createSkelComponent("dialog");
+export const div = createSkelComponent("div");
+export const dl = createSkelComponent("dl");
+export const dt = createSkelComponent("dt");
+export const em = createSkelComponent("em");
+export const embed = createSkelComponent("embed", true);
+export const fieldset = createSkelComponent("fieldset");
+export const figcaption = createSkelComponent("figcaption");
+export const figure = createSkelComponent("figure");
+export const footer = createSkelComponent("footer");
+export const form = createSkelComponent("form");
+export const h1 = createSkelComponent("h1");
+export const h2 = createSkelComponent("h2");
+export const h3 = createSkelComponent("h3");
+export const h4 = createSkelComponent("h4");
+export const h5 = createSkelComponent("h5");
+export const h6 = createSkelComponent("h6");
+export const header = createSkelComponent("header");
+export const hgroup = createSkelComponent("hgroup");
+export const hr = createSkelComponent("hr", true);
+export const i = createSkelComponent("i");
+export const iframe = createSkelComponent("iframe");
+export const img = createSkelComponent("img", true);
+export const input = createSkelComponent("input", true);
+export const ins = createSkelComponent("ins");
+export const kbd = createSkelComponent("kbd");
+export const label = createSkelComponent("label");
+export const legend = createSkelComponent("legend");
+export const li = createSkelComponent("li");
+export const main = createSkelComponent("main");
+export const map = createSkelComponent("map");
+export const mark = createSkelComponent("mark");
+export const menu = createSkelComponent("menu");
+export const menuitem = createSkelComponent("menuitem");
+export const meter = createSkelComponent("meter");
+export const nav = createSkelComponent("nav");
+export const object = createSkelComponent("object");
+export const ol = createSkelComponent("ol");
+export const optgroup = createSkelComponent("optgroup");
+export const option = createSkelComponent("option");
+export const output = createSkelComponent("output");
+export const p = createSkelComponent("p");
+export const param = createSkelComponent("param");
+export const picture = createSkelComponent("picture");
+export const pre = createSkelComponent("pre");
+export const progress = createSkelComponent("progress");
+export const q = createSkelComponent("q");
+export const rp = createSkelComponent("rp");
+export const rt = createSkelComponent("rt");
+export const ruby = createSkelComponent("ruby");
+export const s = createSkelComponent("s");
+export const samp = createSkelComponent("samp");
+export const section = createSkelComponent("section");
+export const select = createSkelComponent("select");
+export const small = createSkelComponent("small");
+export const source = createSkelComponent("source");
+export const span = createSkelComponent("span");
+export const strong = createSkelComponent("strong");
+export const sub = createSkelComponent("sub");
+export const summary = createSkelComponent("summary");
+export const sup = createSkelComponent("sup");
+export const table = createSkelComponent("table");
+export const tbody = createSkelComponent("tbody");
+export const td = createSkelComponent("td");
+export const textarea = createSkelComponent("textarea");
+export const tfoot = createSkelComponent("tfoot");
+export const th = createSkelComponent("th");
+export const thead = createSkelComponent("thead");
+export const time = createSkelComponent("time");
+export const tr = createSkelComponent("tr");
+export const track = createSkelComponent("track");
+export const u = createSkelComponent("u");
+export const ul = createSkelComponent("ul");
+export const video = createSkelComponent("video");
+export const wbr = createSkelComponent("wbr", true);
+export const webview = createSkelComponent("webview");

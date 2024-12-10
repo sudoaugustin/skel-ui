@@ -1,38 +1,54 @@
-import { createSkelItem, createSkelRoot, generatePlaceholder, SkelItemProps } from "@skel-ui/core";
+import { IsLoadingContext, SkelComponentProps, SkelRoot } from "@skel-ui/core";
+import type { ComponentProps, ComponentType, ContextType, ReactNode } from "react";
 import React from "react";
-import { Text, View } from "react-native";
+import * as ReactNative from "react-native";
+import { Animation, UIOptionsContext } from "./Animation";
 
-const $createSkelItem = createSkelItem(false);
+function createSkelComponent<T extends React.ElementType>(type: T) {
+  return ({ sw, sh, sr, children, ...props }: SkelComponentProps<T>) => {
+    const isLoading = React.useContext(IsLoadingContext);
 
-// function Root<T extends React.ElementType = typeof View>({
-//   as,
-//   children,
-//   isLoading = true,
-//   ...rest
-// }: SkelRootProps<T>) {
-//   const Component = as || View;
-//   return (
-//     <IsLoadingProvider value={isLoading}>
-//       <Component {...rest} aria-hidden={isLoading}>
-//         {children}
-//       </Component>
-//     </IsLoadingProvider>
-//   );
-// }
-//
-//
-
-function SkelItem<T extends React.ElementType>({ as, ...rest }: { as: T } & SkelItemProps<T>) {
-  return $createSkelItem(as, false, View)(rest as never);
+    return isLoading ? (
+      <Animation
+        sw={sw}
+        sh={sh}
+        sr={sr}
+        style={{ width: props.width, height: props.height, ...props.style }}
+        numberOfLines={props.numberOfLines}
+      />
+    ) : (
+      React.createElement(type, props, children)
+    );
+  };
 }
 
-const Skel = {
-  Root: createSkelRoot(View),
-  Item: SkelItem,
-  // React Native Elements
-  View: $createSkelItem(View),
-  Text: $createSkelItem(Text),
-};
+export function SkelProvider({
+  colors,
+  radius,
+  children,
+  animation,
+  skelUIPulse,
+}: ContextType<typeof UIOptionsContext> & { children: ReactNode }) {
+  const value = React.useMemo(
+    () => ({ colors, radius, animation, skelUIPulse }),
+    [colors, radius, animation, skelUIPulse],
+  );
 
-export default Skel;
-export { generatePlaceholder };
+  return <UIOptionsContext.Provider value={value}>{children}</UIOptionsContext.Provider>;
+}
+
+function SkelCustom<T extends ComponentType<ComponentProps<T>>>({
+  component,
+  ...rest
+}: { component: T } & ComponentProps<T> & Pick<SkelComponentProps<T>, "sw" | "sh" | "sr">) {
+  return createSkelComponent(component)(rest as never);
+}
+
+export const Root = SkelRoot;
+export const Custom = SkelCustom;
+export const Provider = SkelProvider;
+
+export const View = createSkelComponent(ReactNative.View);
+export const Text = createSkelComponent(ReactNative.Text);
+export const Image = createSkelComponent(ReactNative.Image);
+export const Pressable = createSkelComponent(ReactNative.Pressable);

@@ -1,7 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "include": ["src/**/*", "node_modules/@skel-ui/core"],
-  "compilerOptions": {
-    "emitDeclarationOnly": true
-  }
-}

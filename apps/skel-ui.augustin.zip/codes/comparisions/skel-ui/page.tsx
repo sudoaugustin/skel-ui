@@ -1,5 +1,5 @@
 // "use client";
-// import Skel from "@skel-ui/react";
+// import * as Skel from "@skel-ui/react";
 // import Image from "next/image";
 // import "@skel-ui/react/styles.css";
 // import useProfile from "../useProfile";

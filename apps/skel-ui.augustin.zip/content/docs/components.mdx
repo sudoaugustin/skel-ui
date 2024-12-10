@@ -8,7 +8,7 @@ description: Skel UI has two components. The `Root` component manages the loadin
 This component handles the loading state of all child `Item` components.
 
 ```jsx
-import Skel from "@skel-ui/react";
+import * as Skel from "@skel-ui/react";
 
 function PostCard() {
   return (
@@ -59,7 +59,7 @@ Render its immediate child and merge their props.
 Takes the loading state from nearest `Root` component and render the UI accordingly.
 
 ```jsx
-import Skel from "@skel-ui/react";
+import * as Skel from "@skel-ui/react";
 
 function Demo() {
   return (
