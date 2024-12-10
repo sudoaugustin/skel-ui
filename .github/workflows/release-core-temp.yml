@@ -1,4 +1,4 @@
-name: "Publish Stable Version"
+name: "Publish Stable Core"
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
       - name: Build & Publish
         run: |
           pnpm install --no-frozen-lockfile
-          pnpm build
-          pnpm --filter "./packages/core"  publish --access public --no-git-checks
+          pnpm build --filter @skel-ui/core
+          pnpm publish --filter @skel-ui/core --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
