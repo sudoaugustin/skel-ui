@@ -1,20 +1,18 @@
-name: "Publish Alpha Version"
+name: 'Publish Alpha Version'
 
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        type: choice
-        description: Which package to release
-        options:
-          - core
-          - react
-          - react-native
+  push:
+    branches:
+      - develop
 
 jobs:
   publish:
     name: 🚀 Publishing to NPM
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        package: [core, react, react-native]
 
     steps:
       - uses: actions/checkout@v3
@@ -23,20 +21,22 @@ jobs:
           version: 8
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 22
           registry-url: https://registry.npmjs.org/
 
       - name: Set variables
         run: |
           echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-          echo "VERSION=$(npm view ./packages/${{ github.event.inputs.name }} version)" >> $GITHUB_ENV
+          echo "VERSION=$(npm view ./packages/${{ matrix.package }} version)" >> $GITHUB_ENV
+
+      - name: Build packages
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm build
 
       - name: Publish packages
         run: |
-          pnpm install --no-frozen-lockfile
-          pnpm --filter "@skel-ui/${{ github.event.inputs.name }}" build
-          pnpm --filter "@skel-ui/${{ github.event.inputs.name }}" exec pnpm version ${{ env.VERSION }}-alpha.${{ env.COMMIT_ID }}
-          pnpm --filter "@skel-ui/${{ github.event.inputs.name }}" publish --tag alpha --access public --no-git-checks
-
+          pnpm --filter "@skel-ui/${{ matrix.package }}" --filter "[origin/develop]" exec pnpm version ${{ env.VERSION }}-alpha.${{ env.COMMIT_ID }}
+          pnpm --filter "@skel-ui/${{ matrix.package }}" --filter "[origin/develop]" publish --tag alpha --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
