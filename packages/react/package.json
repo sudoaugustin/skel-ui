@@ -44,6 +44,9 @@
     "type": "git",
     "url": "git+https://github.com/sudoaugustin/skel-ui"
   },
+  "dependencies": {
+    "@skel-ui/core": "workspace:*"
+  },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
     "@skel-ui/core": "workspace:*",
@@ -67,7 +70,6 @@
     "typescript": "^5.7.2"
   },
   "peerDependencies": {
-    "@skel-ui/core": "workspace:*",
     "react": "^17.0 || ^18.0",
     "react-dom": "^17.0 || ^18.0"
   }
