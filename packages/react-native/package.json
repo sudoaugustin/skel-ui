@@ -21,6 +21,11 @@
       "require": "./dist/cjs/utils.js"
     }
   },
+  "typesVersions": {
+    "*": {
+      "utils": ["./dist/utils.d.ts"]
+    }
+  },
   "scripts": {
     "build": "rm -rf dist && pnpm build:dts && pnpm build:esm && pnpm build:cjs",
     "build:dts": "tsc -p tsconfig.json --outDir dist --emitDeclarationOnly",
