@@ -14,7 +14,7 @@ function createSkelComponent<T extends ElementType>(type: T, isVoidTag = false) 
       ? {
           width: sw,
           height: sh,
-          borderRadius: sr || "var(--skel-ui-radius)",
+          borderRadius: sr,
           color: "transparent",
           cursor: "default",
           userSelect: "none",

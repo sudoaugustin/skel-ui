@@ -7,6 +7,7 @@
 }
 
 [aria-hidden="true"][data-loading="true"] {
+  border-radius: var(--skel-ui-radius);
   animation: skel-ui-shimmer var(--skel-ui-animation-duration, 2s) var(--skel-ui-animation-easing) infinite !important;
   background-image: linear-gradient(
     to right,
