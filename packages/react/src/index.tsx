@@ -30,7 +30,7 @@ function createSkelComponent<T extends ElementType>(type: T, isVoidTag = false) 
         "aria-hidden": isLoading,
         "data-loading": isLoading,
         // Use base64 transparent image while loading to avoid broken image ui. This doesn't trigger error on other media tags.
-        ...(isLoading && "src" in props && props.src === undefined
+        ...(isLoading
           ? {
               src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAgEB/6mZBQAAAABJRU5ErkJggg==",
             }
