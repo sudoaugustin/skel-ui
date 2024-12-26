@@ -1,57 +1,29 @@
 ---
-title: Getting Started
+title: Introduction
 description: Skel UI resolves the challenges of implementing skeletons by eliminating the need to create dedicated loading screens and providing an easier way to manage skeleton states using react-context.
 ---
-
 import Portal from "app/Portal";
-import { PostCard } from "@skel-ui/react/$components";
+import Buttons from "@ui/examples/Buttons";
 
-## Install package
+## Skeletons at foundation
 
-Install Skel UI into your project via command line.
+Implement skeletons at the foundation of your application. By default, it will render a real UI, but when wrapped inside a `Root`, it will behave like a skeleton.
 
-```package-install
-@skel-ui/react
-```
-
-## Import CSS
-
-Import the CSS file into the root of your application.
-
-```js
-import "@skel-ui/react/styles.css";
-```
-
-## Start crafting
-
-Now it's time for you to craft your user interface to life!
-
-<Portal codesandbox="https://codesandbox.io/p/sandbox/rendering-list-forked-kxdnwr">
-  <PostCard />
+<Portal className="h-72" disableRefresh>
+    <Buttons>
+        ```tsx
+        <Button label="Press Me"/>
+        ```
+        ```tsx
+        <Skel.Root>
+          <Button label="Press Me"/>
+        </Skel.Root>
+        ```
+    </Buttons>
 </Portal>
 
-<Tabs items={["PostCard.tsx", "PostCard.css"]}>
-
-```json doc-gen:file
-{
-  "file": "./codes/PostCard/index.tsx",
-  "codeblock": {
-    "lang": "tsx",
-    "meta": "tab=\"PostCard.tsx\""
-  }
+```tsx title="Button.tsx"
+export default function Button({ label, ...rest }) {
+  return <Skel.button {...rest}>{label}</Skel.button>;
 }
 ```
-
-```json doc-gen:file
-{
-  "file": "./codes/PostCard/index.css",
-  "codeblock": {
-    "lang": "css",
-    "meta": "tab=\"PostCard.css\""
-  }
-}
-```
-
-</Tabs>
-
-Now, not only have you designed the skeleton, but you have also done the actual UI. Additionally, the loading state for the entire UI is handled in a single place at `<Skel.Root>`.

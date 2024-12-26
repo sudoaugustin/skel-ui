@@ -1,0 +1,65 @@
+---
+title: Getting Started
+description: Integrate skeletons into your react-native project quickly and easily using Skel UI in minutes.
+---
+
+import Portal from "app/Portal";
+import PostCardOld from "codes/PostCard.Old";
+import { PostCard } from "@skel-ui/react/$components";
+
+## Install package
+Install Skel UI into your project via command line.
+
+<div className="[&_button]:capitalize 1st:[&_button]:uppercase 2nd:[&_button]:uppercase">
+```package-install
+@skel-ui/react-native
+```
+</div>
+
+## Add Skel Provider
+Wrap your application with Skel UI provider.
+```tsx
+import * as Skel from "@skel-ui/react-native/src";
+
+export default function App() {
+  return <Skel.Provider> ... </Skel.Provider>;
+}
+```
+
+## Implement Skel UI
+Consider a PostCard component that shows a spinner while the data is being fetched.
+
+<Portal>
+  <PostCardOld />
+</Portal>
+
+```json doc-gen:file
+{
+  "file": "./codes/snippets/react-native/PostCard.Old.tsx",
+  "codeblock": {
+    "lang": "tsx",
+    "meta": ""
+  }
+}
+```
+
+Let's replace the spinner loading with skeleton loading. To accomplish this, just follow two steps:
+
+1. Replace the ternary operator with `<Skel.Root>`.
+2. Substitute your react-native elements with Skel UI elements (e.g., `RN.Text` becomes `Skel.Text`).
+
+<Portal>
+  <PostCard />
+</Portal>
+
+```json doc-gen:file
+{
+  "file": "./codes/snippets/react-native/PostCard.tsx",
+  "codeblock": {
+    "lang": "tsx",
+    "meta": ""
+  }
+}
+```
+
+You'll notice the `loading:` and `loaded:` variants in the Tailwind classes. Learn more about them on the next page.

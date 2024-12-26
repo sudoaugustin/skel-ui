@@ -8,62 +8,88 @@ import Animated, {
   EasingFunctionFactory,
   useFrameCallback,
   useSharedValue,
+  withDelay,
   withRepeat,
   withTiming,
 } from "react-native-reanimated";
 import { TStyle, filterStyle } from "./funcs";
-
-type UIOptions = {
-  radius?: number;
-  colors?: [string, string];
-  animation?: { easing?: EasingFunction | EasingFunctionFactory; duration?: number } | { component: ReactNode };
-  skelUIPulse?: boolean;
-};
 
 type AnimationProps = Pick<SkelComponentProps<typeof View>, "sw" | "sh" | "sr"> & {
   style?: TStyle;
   numberOfLines?: number;
 };
 
-type AnimationItemProps = {
-  colors: NonNullable<UIOptions["colors"]>;
-  animation: NonNullable<Exclude<UIOptions["animation"], { component: ReactNode }>>;
+export type UIOptions = {
+  color?: string;
+  radius?: number;
+  shimmer?: {
+    color?: string;
+    // direction?: "top" | "bottom" | "left" | "right";
+  };
+  animation?:
+    | { component: ReactNode }
+    | { delay?: number; easing?: EasingFunction | EasingFunctionFactory; duration?: number };
+  skelUIPulse?: boolean;
 };
 
 export const UIOptionsContext = createContext<UIOptions>({});
 
-function Pluse({ colors, animation }: AnimationItemProps) {
+type AnimationItemProps = Required<Omit<UIOptions, "shimmer" | "animation" | "skelUIPulse">> & {
+  shimmer: Required<NonNullable<UIOptions["shimmer"]>>;
+  animation: Required<NonNullable<Exclude<UIOptions["animation"], { component: ReactNode }>>>;
+};
+
+function Pluse({ color, animation }: AnimationItemProps) {
   const opacity = useSharedValue(0.5);
 
   useFrameCallback(() => {
-    if (opacity.value === 1) opacity.value = withTiming(0.5, animation);
-    if (opacity.value === 0.5) opacity.value = withTiming(1, animation);
+    if (opacity.value === 1 || opacity.value === 0.5) {
+      const { delay, ...options } = animation;
+      opacity.value = withDelay(delay, withTiming(opacity.value === 1 ? 0.5 : 1, options));
+    }
   });
 
   return (
-    <Animated.View style={{ width: "100%", height: "100%", opacity, backgroundColor: colors[0] }} aria-hidden>
+    <Animated.View style={{ width: "100%", height: "100%", opacity, backgroundColor: color }} aria-hidden>
       <Text> ‌ </Text>
     </Animated.View>
   );
 }
 
-function Gradient({ colors, animation }: AnimationItemProps) {
-  const translateX = useSharedValue("-100%");
+function Shimmer({ color, shimmer, animation }: AnimationItemProps) {
+  // const isReverse = shimmer.direction === "top" || shimmer.direction === "left";
+  // const isVertical = shimmer.direction === "top" || shimmer.direction === "bottom";
+  // const translate = useSharedValue(isReverse ? "100%" : "-100%");
+  //
+  const translate = useSharedValue("-100%");
+
+  const cords = {
+    x: { start: { x: 0, y: 0 }, end: { x: 1, y: 0 } },
+    y: { start: { x: 0, y: 0 }, end: { x: 0, y: 1 } },
+  };
+
+  const style = { width: "100%", height: "100%" } as const;
 
   useEffect(() => {
-    translateX.value = withRepeat(withTiming("100%", animation), -1, false);
+    const { delay, ...options } = animation;
+    translate.value = withDelay(delay, withRepeat(withTiming("100%", options), -1, false));
+    // translate.value = withDelay(delay, withRepeat(withTiming(isReverse ? "-100%" : "100%", options), -1, false));
   }, []);
 
   return (
-    <View style={{ backgroundColor: colors[0] }}>
+    <View style={{ backgroundColor: color }}>
       <Animated.View
-        style={{ width: "100%", height: "100%", transform: [{ translateX: translateX as unknown as number }] }}
+        style={{
+          ...style,
+          transform: [{ translateX: translate as unknown as number }],
+          // transform: [{ [isVertical ? "translateY" : ("translateX" as never)]: translate as unknown as number }],
+        }}
       >
         <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={{ width: "100%", height: "100%" }}
-          colors={[...colors, colors[0]]}
+          {...cords.x}
+          style={style}
+          colors={[color, shimmer.color, color]}
+          // {...cords[shimmer.direction === "left" || shimmer.direction === "right" ? "x" : "y"]}
         />
       </Animated.View>
     </View>
@@ -73,12 +99,21 @@ function Gradient({ colors, animation }: AnimationItemProps) {
 export function Animation({ sw, sh, sr, style = {}, numberOfLines = 1 }: AnimationProps) {
   const text = useMemo(() => new Array(numberOfLines).fill(" ‌ ").join("\n"), [numberOfLines]);
   const { viewStyle, textStyle } = filterStyle(style);
-  const { colors = ["#cbd5e1", "#f1f0f0"], radius = 4, animation = {}, skelUIPulse } = useContext(UIOptionsContext);
+  const { color = "#cbd5e1", radius = 4, shimmer = {}, animation = {}, skelUIPulse } = useContext(UIOptionsContext);
 
-  const isCustomAnimation = "component" in animation;
-  const animationItemProps = {
-    colors: colors,
-    animation: { duration: skelUIPulse ? 1000 : 2000, easing: Easing.bezier(0.4, 0, 0.6, 1), ...animation },
+  const $props = {
+    color,
+    radius,
+    shimmer: {
+      color: "#f1f0f0",
+      ...shimmer,
+    },
+    animation: {
+      delay: 0,
+      easing: Easing.bezier(0.4, 0, 0.6, 1),
+      duration: skelUIPulse ? 1000 : 2000,
+      ...animation,
+    },
   };
 
   return (
@@ -95,13 +130,7 @@ export function Animation({ sw, sh, sr, style = {}, numberOfLines = 1 }: Animati
     >
       <Text style={textStyle}>{text}</Text>
       <View style={{ inset: 0, position: "absolute" }}>
-        {isCustomAnimation ? (
-          animation.component
-        ) : skelUIPulse ? (
-          <Pluse {...animationItemProps} />
-        ) : (
-          <Gradient {...animationItemProps} />
-        )}
+        {"component" in animation ? animation.component : skelUIPulse ? <Pluse {...$props} /> : <Shimmer {...$props} />}
       </View>
     </View>
   );

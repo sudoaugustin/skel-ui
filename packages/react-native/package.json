@@ -3,7 +3,7 @@
   "author": "https://github.com/sudoaugustin",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Next era of skeleton loading for React Native",
+  "description": "Small but mighty skeleton loading for React Native",
   "files": ["dist"],
   "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@skel-ui/core": "workspace:*",
-    "@types/react": "^18.3.12",
+    "@types/react": "18.3.12",
     "commons-tsconfig": "workspace:*",
     "esbuild": "^0.24.0",
     "expo-linear-gradient": "^14.0",

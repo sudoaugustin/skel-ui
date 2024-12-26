@@ -1,5 +1,5 @@
 import "@skel-ui/react/styles.css";
-import { DocsLayout } from "fumadocs-ui/layout";
+import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { RootProvider } from "fumadocs-ui/provider";
 import { DM_Mono, DM_Sans } from "next/font/google";
 import Image from "next/image";
@@ -26,7 +26,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               ),
             }}
             tree={source.pageTree}
-            sidebar={{ defaultOpenLevel: 1 }}
+            sidebar={{ collapsible: false, defaultOpenLevel: 1 }}
             githubUrl="https://github.com/sudoaugustin/skel-ui"
           >
             {children}

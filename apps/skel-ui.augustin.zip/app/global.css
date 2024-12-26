@@ -2,12 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --order: global;
+}
+
 @layer base {
   .shiki .highlighted-word {
     @apply !rounded !border-[hsl(var(--primary)_/_10%)];
   }
-
-  aside a {
-    @apply !font-normal;
+  aside {
+    a[data-active] {
+      @apply after:h-0.5 after:w-6 after:skew-x-[-36deg] after:bottom-[0.375rem] after:scale-x-0 after:duration-300 after:origin-left after:absolute after:bg-brand/50 after:-z-5 relative !font-normal !rounded-none !bg-transparent;
+    }
+    a[data-active="true"] {
+      @apply text-brand after:scale-x-100;
+    }
+    a[data-active="false"] {
+      @apply hover:text-white;
+    }
+    button[data-state="open"] {
+      @apply !pointer-events-none [&>svg]:hidden;
+    }
   }
 }

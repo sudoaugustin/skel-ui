@@ -9,9 +9,9 @@ export default function IndexPage() {
   const { posts = generatePlaceholder(4, "postId"), isLoading } = usePosts(1);
 
   return (
-    <Skel.Root isLoading={isLoading}>
+    <Skel.Root isLoading={true}>
       <View style={{ gap: 20, paddingBottom: 80 }}>
-        {posts.map((post) => (
+        {posts.map((post, index) => (
           <View key={post.postId} style={styles.card}>
             <Skel.Image src={post.image} style={styles.cardImage} />
             <Skel.Text sw="65%" style={styles.cardTitle}>

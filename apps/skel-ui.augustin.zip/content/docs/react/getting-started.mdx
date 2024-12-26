@@ -1,0 +1,63 @@
+---
+title: Getting Started
+description: Integrate skeletons into your project quickly and easily using Skel UI in minutes.
+---
+
+import Portal from "app/Portal";
+import PostCardOld from "codes/PostCard.Old";
+import { PostCard } from "@skel-ui/react/$components";
+
+## Install package
+
+Install Skel UI into your project via command line.
+
+<div className="[&_button]:capitalize 1st:[&_button]:uppercase 2nd:[&_button]:uppercase">
+```package-install
+@skel-ui/react
+```
+</div>
+
+## Import CSS
+
+Import the CSS file into the root of your application.
+
+```js
+import "@skel-ui/react/styles.css";
+```
+
+## Implement Skel UI
+
+Consider a PostCard component that shows a spinner while the data is being fetched.
+
+<Portal>
+  <PostCardOld />
+</Portal>
+
+```json doc-gen:file
+{
+  "file": "./codes/snippets/PostCard.Old.tsx",
+  "codeblock": {
+    "lang": "tsx",
+    "meta": ""
+  }
+}
+```
+
+Let's replace the spinner loading with skeleton loading. To accomplish this, just follow two steps:
+
+1. Replace the ternary operator with `<Skel.Root>`.
+2. Substitute your HTML elements with Skel UI elements (e.g., `h1` becomes `Skel.h1`).
+
+<Portal>
+  <PostCard />
+</Portal>
+
+```json doc-gen:file
+{
+  "file": "./codes/snippets/PostCard.tsx",
+  "codeblock": {
+    "lang": "tsx",
+    "meta": ""
+  }
+}
+```

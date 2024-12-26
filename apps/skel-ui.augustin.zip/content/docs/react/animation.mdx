@@ -1,0 +1,42 @@
+---
+title: Animation
+---
+
+import Portal from "app/Portal";
+import { PostCard, Animations } from "@skel-ui/react/$components";
+
+## Built-in animations
+Skel UI defaults to using a shimmer animation effect for skeletons, but it also includes a built-in pulse animation.
+
+<Portal>
+  <Animations />
+</Portal>
+<div className="flex [&>*]:flex-1 [&>*]:m-0 divide-x border rounded-b-lg [&_*]:border-0 [&_*]:rounded-none">
+    ```tsx
+    <body className=""> ... </body>
+    ```
+    ```tsx
+    <body className="skel-ui-pulse"> ... </body>
+    ```
+</div>
+
+## Animation Timing
+
+The timing of the animation can be customized using CSS variables.
+```css title="global.css"
+:root {
+  --skel-ui-animation-duration: 3500ms;
+  --skel-ui-animation-easing: ease-in-out;
+  --skel-ui-animation-delay: 250ms;
+}
+```
+
+## Custom animation
+
+If the built-in animations and configurations do not meet your requirements, Skel UI offers the flexibility to create custom animations.
+
+```css
+[data-loading="true"] {
+  animation:  /* Put your animation */;
+}
+```

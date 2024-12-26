@@ -1,9 +1,8 @@
 // [!code word:generatePlaceholder]
-
 import { usePosts } from "commons-utils/hooks";
-import * as Skel from "./../../src";
+import * as Skel from "./@skel-ui/react";
 import { generatePlaceholder } from "./../../src/utils";
-import Image from "./Image";
+import Image from "@ui/image";
 
 export default function PostCardList() {
   const { posts = generatePlaceholder(4, "postId"), isLoading } = usePosts(1); // [!code highlight]
@@ -33,3 +32,5 @@ export default function PostCardList() {
     </Skel.Root>
   );
 }
+
+

@@ -25,12 +25,9 @@ This variant is used to style the components while loading. Useful to define siz
 
 ```tsx
 // [!code word:loading\:w-32 loading\:h-10]
-// [!code word:loading\:pointer-events-none]
-<Skel.Root className="loading:pointer-events-none">
-  <Skel.Item style="text-lg font-medium loading:w-32 loading:h-10">
-    ...
-  </Skel.Item>
-</Skel.Root>
+<Skel.h1 className="text-lg font-medium loading:w-32 loading:h-10">
+  ...
+</Skel.h1>
 ```
 
 ### `loaded:`
@@ -40,9 +37,7 @@ This variant is used to style the components after loading is done. Useful to de
 ```tsx
 // [!code word:loaded\:bg-blue-400]
 // [!code word:loaded\:border-2 loaded\:hover\:scale-125]
-<Skel.Root className="loaded:bg-blue-400">
-  <Skel.Item style="text-lg font-medium loaded:border-2 loaded:hover:scale-125">
-    ...
-  </Skel.Item>
-</Skel.Root>
+<Skel.h1 className="text-lg font-medium loaded:border-2 loaded:hover:scale-125">
+  ...
+</Skel.Item>
 ```

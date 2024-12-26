@@ -3,7 +3,7 @@ import { IsLoadingContext, SkelComponentProps, SkelRoot } from "@skel-ui/core";
 import type { ComponentProps, ComponentType, ElementType } from "react";
 import React from "react";
 
-type SkelCustomProps<T extends ComponentType<ComponentProps<T>>> = { as: T } & ComponentProps<T> &
+type SkelItemProps<T extends ComponentType<ComponentProps<T>>> = { as: T } & ComponentProps<T> &
   Pick<SkelComponentProps<T>, "sw" | "sh" | "sr">;
 
 function createSkelComponent<T extends ElementType>(type: T, isVoidTag = false) {
@@ -29,8 +29,8 @@ function createSkelComponent<T extends ElementType>(type: T, isVoidTag = false) 
         style: { ...style, ...loadingStyle },
         "aria-hidden": isLoading,
         "data-loading": isLoading,
-        // Use base64 transparent image while loading to avoid broken image ui. This doesn't trigger error on other media tags.
-        ...(isLoading
+        // Use base64 transparent image while loading to avoid broken image ui for falsy src. This doesn't trigger error on other media tags.
+        ...(isLoading && "src" in props
           ? {
               src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAgEB/6mZBQAAAABJRU5ErkJggg==",
             }
@@ -41,12 +41,12 @@ function createSkelComponent<T extends ElementType>(type: T, isVoidTag = false) 
   };
 }
 
-function SkelCustom<T extends ComponentType<ComponentProps<T>>>({ as, ...rest }: SkelCustomProps<T>) {
+function SkelItem<T extends ComponentType<ComponentProps<T>>>({ as, ...rest }: SkelItemProps<T>) {
   return createSkelComponent(as)(rest as never);
 }
 
 export const Root = SkelRoot;
-export const Custom = SkelCustom;
+export const Item = SkelItem;
 
 export const a = createSkelComponent("a");
 export const address = createSkelComponent("address");

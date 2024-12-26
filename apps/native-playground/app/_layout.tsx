@@ -11,10 +11,7 @@ export default function RootLayout() {
   const pathname = usePathname();
 
   return (
-    <Skel.Provider
-      skelUIPulse
-      animation={{ component: <View style={{ width: "100%", height: "100%", backgroundColor: "red" }} /> }}
-    >
+    <Skel.Provider color="#a1a1aa" radius={4} shimmer={{ color: "#e4e4e7" }}>
       <View style={{ height: Dimensions.get("window").height + 48, position: "relative" }}>
         <ScrollView>
           <View style={{ padding: 20 }}>

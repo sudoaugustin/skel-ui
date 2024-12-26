@@ -1,18 +1,12 @@
 // [!code word:generatePlaceholder]
+import * as Skel from "@skel-ui/react";
+import Image from "@ui/image";
 
-import { usePost } from "commons-utils/hooks";
-import * as Skel from "../../src";
-import Image from "./Image";
-
-type Props = {
-  isLoading?: boolean;
-};
-
-export default function PostCard(props: Props) {
+export default function PostCard() {
   const { post, isLoading } = usePost();
 
   return (
-    <Skel.Root isLoading={props.isLoading !== undefined ? props.isLoading : isLoading}>
+    <Skel.Root isLoading={isLoading}>
       <div className="group w-full max-w-80 p-2.5 bg-white border border-slate-200 rounded-lg overflow-hidden duration-300">
         <Skel.Item
           as={Image}
@@ -25,3 +19,5 @@ export default function PostCard(props: Props) {
     </Skel.Root>
   );
 }
+
+
