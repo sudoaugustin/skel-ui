@@ -4,7 +4,6 @@ description: Skel UI provides styling through Skel Provider and Component props 
 ---
 
 import Portal from "app/Portal";
-import Message from "app/Message";
 import * as Skel from "@skel-ui/react";
 
 ## Skel UI Provider
@@ -37,9 +36,9 @@ The width, height and radius of the skeleton for each element can be modified wi
 | `sh` | `string`                         | Height of the skeleton                       |
 | `sr` | `number`                         | Overrides the default skeleton border-radius |
 
-<Message>
+<Callout type="warn">
     By default, the border-radius defined in `style` will be applied to the skeleton. Therefore, avoid setting `sr` unless you want a different border-radius for the skeleton.
-</Message>
+</Callout>
 
 ## Text based on `numberOfLines`
 

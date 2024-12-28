@@ -1,22 +1,52 @@
 ---
 title: Introduction
-description: Skel UI resolves the challenges of implementing skeletons by eliminating the need to create dedicated loading screens and providing an easier way to manage skeleton states using react-context.
+description: A lightweight skeleton library for React and React Native.
 ---
+
+Skel UI resolves the challenges of implementing skeletons by eliminating the need to create dedicated loading screens and providing an easier way to manage skeleton states using React Context.
+
 import Portal from "app/Portal";
 import Buttons from "@ui/examples/Buttons";
+import { GlobeAltIcon, DevicePhoneMobileIcon } from "@heroicons/react/24/outline"
 
-## Skeletons at foundation
+## Ideology
 
-Implement skeletons at the foundation of your application. By default, it will render a real UI, but when wrapped inside a `Root`, it will behave like a skeleton.
+Modern applications often use skeleton screens to enhance user experience during data loading. However, managing these screens manually can be time-consuming and repetitive. When the UI changes, the skeleton must also be updated to avoid UI mismatches.
 
-<Portal className="h-72" disableRefresh>
+Current libraries require developers to handle the skeleton loading logic in multiple places. For instance, if you have a card with a title and a description, you'll need to implement the skeleton rendering logic twice. This is frustrating and compromises the overall developer experience.
+
+So, many developers end up just using spinners which pisses the CEOs and clients.
+
+The goal is to make skeletons a fundamental feature of applications instead of a time-consuming task by solving the above problems. The developers should focus on building features rather than managing loading states.
+
+## Features
+<Cards>
+  <Card title="Better DX">
+    Enhanced developer experience with flexible API.
+  </Card>
+  <Card title="Typescript">
+    Components and utilities are fully-typed.
+  </Card>
+  <Card title="App Router">
+    No need to add `"use client"` when implementing Skel UI in base layer components.
+  </Card>
+  <Card title="Complete Customization">
+    Developers have full control over the design and animation elements.
+  </Card>
+</Cards>
+
+## Skel UI at the Base Layer
+
+Implement skeleton at the base layer of your application (e.g., buttons, chips, and avatars). It will render a real UI by default. However, when wrapped inside `Root`, it will render skeleton.
+
+<Portal disableRefresh>
     <Buttons>
         ```tsx
-        <Button label="Press Me"/>
+        <Button label="Press Me" />
         ```
         ```tsx
         <Skel.Root>
-          <Button label="Press Me"/>
+          <Button label="Press Me" />
         </Skel.Root>
         ```
     </Buttons>
@@ -24,6 +54,73 @@ Implement skeletons at the foundation of your application. By default, it will r
 
 ```tsx title="Button.tsx"
 export default function Button({ label, ...rest }) {
-  return <Skel.button {...rest}>{label}</Skel.button>;
+  return (
+    <Skel.button {...rest}>
+      {label}
+    </Skel.button>
+  );
 }
 ```
+
+## Comparision
+
+This section provides unbiased information about Skel UI compared to React Loading Skeleton. If you have suggestions for improvement, please share your notes or evidence using the "Edit on GitHub" link at the bottom.
+
+### Code overview
+
+<div className="lg:flex lg:space-x-4 [&>*]:flex-1">
+    ```tsx title="React Loading Skeleton"
+    <div>
+      <h1>
+        {isLoading ? <Skeleton /> : post?.title}
+      </h1>
+      {isLoading ? (
+        <Skeleton count={4} />
+      ) : (
+        <p>{post?.body}</p>
+      )}
+      {isLoading ? (
+        <Skeleton height={40} />
+      ) : (
+        <Button label="Like" />
+      )}
+    </div>
+    ```
+    ```tsx title="Skel UI"
+    <div>
+      <Skel.Root isLoading={isLoading}>
+        <Skel.h1>{post?.title}</Skel.h1>
+        <Skel.p>{post?.body}</Skel.p>
+        <Button label="Like" />
+      </Skel.Root>
+    </div>;
+    ```
+</div>
+
+### Features
+
+| Description                               | Skel UI | React Loading Skeleton |
+| ----------------------------------------- | ------- | ---------------------- |
+| Has multiline support                     | No      | Yes 🏆                 |
+| Sync User Interface                       | Yes 🤝  | Yes                    |
+| Automatic correct sizing                  | Yes 🤝  | Yes                    |
+| Loading logic in one place                | Yes 🏆  | No                     |
+| Require prop drilling for loading state   | No 🏆   | Yes                    |
+| Number of animations                      | 2 🏆    | 1                      |
+| Customize animation timing                | Yes 🤝  | Yes                    |
+| Custom animation                          | Yes 🏆  | No                     |
+| First-class support for Tailwind          | Yes 🏆  | No                     |
+
+
+## Next step
+
+Select the platform where you would like to implement Skel UI.
+
+<Cards>
+  <Card icon={<GlobeAltIcon />} href="/react/getting-started" title="React">
+    Learn how to add Skel UI into web application.
+  </Card>
+  <Card icon={<DevicePhoneMobileIcon />} href="/react-native/getting-started" title="React Native">
+    Learn how to add Skel UI into mobile application.
+  </Card>
+</Cards>

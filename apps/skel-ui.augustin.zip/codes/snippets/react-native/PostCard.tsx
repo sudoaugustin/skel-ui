@@ -1,4 +1,4 @@
-import * as Skel from "@skel-ui/react-native/src";
+import * as Skel from "@skel-ui/react-native";
 import RN from "react-native";
 
 export default function PostCard() {

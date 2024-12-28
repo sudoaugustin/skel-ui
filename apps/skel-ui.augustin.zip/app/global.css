@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --order: global;
-}
-
 @layer base {
   .shiki .highlighted-word {
     @apply !rounded !border-[hsl(var(--primary)_/_10%)];
@@ -18,7 +14,7 @@
       @apply text-brand after:scale-x-100;
     }
     a[data-active="false"] {
-      @apply hover:text-white;
+      @apply hover:text-black dark:hover:text-white;
     }
     button[data-state="open"] {
       @apply !pointer-events-none [&>svg]:hidden;

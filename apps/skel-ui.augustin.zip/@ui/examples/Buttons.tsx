@@ -27,9 +27,11 @@ export default function Buttons({ children }: { children: ReactNode[] }) {
     <div className="flex space-x-10 w-full max-w-2xl">
       {items.map(({ label, component }, index) => (
         <div key={label} className="flex-1">
-          <h4 className="font-medium mb-2.5 text-neutral-800 dark:text-neutral-200">{label}</h4>
+          <h4 className="font-medium mb-5 text-neutral-800 dark:text-neutral-200">{label}</h4>
           {component}
-          <div className="bg-neutral-800 rounded-lg [&>*]:h-24">{children[index] as string}</div>
+          <div className="mt-2.5 bg-neutral-200 dark:bg-neutral-800 rounded-lg [&>*]:h-24 [&>*]:m-0">
+            {children[index] as string}
+          </div>
         </div>
       ))}
     </div>

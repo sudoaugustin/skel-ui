@@ -14,7 +14,7 @@ stories.forEach((filename) => {
       .replace("\n", "")
       .replace("./Image", "@ui/image")
       .replace('import { usePost } from "commons-utils/hooks";\n', "")
-      .replace("../../src", "@skel-ui/react")
+      .replace('import { usePosts } from "commons-utils/hooks";\n', "")
       .replace(
         `
 type Props = {
@@ -23,7 +23,8 @@ type Props = {
         "",
       )
       .replace("props: Props", "")
-      .replace("props.isLoading !== undefined ? props.isLoading : isLoading", "isLoading");
+      .replace("props.isLoading !== undefined ? props.isLoading : isLoading", "isLoading")
+      .replaceAll("../../src", "@skel-ui/react");
 
     writeOutput(filename, content);
   }

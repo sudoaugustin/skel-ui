@@ -1,4 +1,5 @@
 import { source } from "app/source";
+import { Callout } from "fumadocs-ui/components/callout";
 import { Card, Cards } from "fumadocs-ui/components/card";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import defaultMdxComponents from "fumadocs-ui/mdx";
@@ -15,15 +16,31 @@ export default async function Page({ params }: Props) {
   const page = source.getPage(slug);
 
   if (!page) notFound();
-
   const MDX = page.data.body;
+  // const time = await getGithubLastEdit({
+  //   sha: "main",
+  //   repo: "skel-ui",
+  //   path: `apps/skel-ui.augustin.zip/content/docs/${page.file.path}`,
+  //   owner: "sudoaugustin",
+  // });
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.toc}
+      full={page.data.full}
+      editOnGithub={{
+        sha: "main",
+        repo: "skel-ui",
+        path: `apps/skel-ui.augustin.zip/content/docs/${page.file.path}`,
+        owner: "sudoaugustin",
+      }}
+      footer={{ enabled: page.url !== "/" }}
+      // lastUpdate={new Date(time || "")}
+    >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
-        <MDX components={{ ...defaultMdxComponents, Tab, Tabs, Card, Cards }} />
+        <MDX components={{ ...defaultMdxComponents, Tab, Tabs, Card, Cards, Callout }} />
       </DocsBody>
     </DocsPage>
   );

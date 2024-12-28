@@ -13,7 +13,7 @@ export default function PostCard() {
           src={post?.image}
           className="rounded aspect-[800/530] duration-150 loaded:group-hover:scale-110"
         />
-        <Skel.h1 className="text-xl font-bold mt-4 loading:max-w-48">{post?.title}</Skel.h1>
+        <Skel.h1 className="text-xl font-bold mt-4 loading:max-w-36">{post?.title}</Skel.h1>
         <Skel.p className="text-sm my-2 loading:h-[3.75rem]">{post?.description}</Skel.p>
       </div>
     </Skel.Root>

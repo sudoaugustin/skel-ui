@@ -2,3 +2,101 @@
 title: Migrate to v1
 description: Migrate your projects from v0 to v1.
 ---
+
+Skel UI v1 is a major version update. There are many breaking changes, and sorry about that. However, this version provides an overall better developer experience.
+
+Please follow this guide to upgrade your applications to Skel UI v1.
+
+## Upgrade package
+
+<div className="[&_button]:capitalize 1st:[&_button]:uppercase 2nd:[&_button]:uppercase">
+```package-install
+@skel-ui/react@latest
+```
+</div>
+
+## Update imports
+
+```ts
+import Skel from "@skel-ui/react"; /* [!code --] */
+import * as Skel from "@skel-ui/react"; /* [!code ++] */
+```
+
+`generatePlaceholder` has been moved to a different file.
+```ts
+import { generatePlaceholder } from "@skel-ui/react"; /* [!code --] */
+import { generatePlaceholder } from "@skel-ui/react/utils"; /* [!code ++] */
+```
+
+
+## Update `Skel.Root`
+
+The `Root` element will not render HTML element anymore.
+```ts
+<Skel.Root className="card"> // [!code --]
+  ... // [!code --]
+</Skel.Root> // [!code --]
+
+<Skel.Root> // [!code ++]
+  <div className="card"> // [!code ++]
+    ...  // [!code ++]
+  </div> // [!code ++]
+</Skel.Root> // [!code ++]
+```
+
+```ts
+<Skel.Root as="section"> // [!code --]
+  ... // [!code --]
+</Skel.Root> // [!code --]
+
+<Skel.Root> // [!code ++]
+  <section> // [!code ++]
+    ...  // [!code ++]
+  </section> // [!code ++]
+</Skel.Root> // [!code ++]
+```
+
+## Update `Skel.Item`
+
+The `Item` component will no longer accept HTML elements. It's been change to accept only React components.
+```ts
+<Skel.Item id="card"> // [!code --]
+<Skel.p id="card"> // [!code ++]
+
+<Skel.Item as="h1"> // [!code --]
+<Skel.h1> // [!code ++]
+```
+
+The `radius` prop has been changed to `sr`.
+
+```ts
+<Skel.p
+  radius="" // [!code --]
+  sr="" // [!code ++]
+/>
+```
+
+The `children` prop will no longer accept function.
+```ts
+<Skel.p>
+  {() => <Comp/>} // [!code --]
+  <Comp/>         // [!code ++]
+</Skel.p>
+```
+
+## Update CSS variables
+
+Some CSS variables have been changed.
+
+```css
+:root{
+  --skel-ui-color1: #a1a1aa; /* [!code --] */
+  --skel-ui-color: #a1a1aa;  /* [!code ++] */
+
+  --skel-ui-color2: #e4e4e7; /* [!code --] */
+  --skel-ui-shimmer-color: #e4e4e7; /* [!code ++] */
+
+}
+```
+
+Some CSS variables has been added to customize the animation timing. Please read [here](/react/animation#animation-timing).

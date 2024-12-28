@@ -1,15 +1,16 @@
 // [!code word:generatePlaceholder]
-import { usePosts } from "commons-utils/hooks";
-import * as Skel from "./@skel-ui/react";
-import { generatePlaceholder } from "./../../src/utils";
+import * as Skel from "@skel-ui/react";
+import { generatePlaceholder } from "@skel-ui/react/utils";
 import Image from "@ui/image";
+
+// For React Native, use "@skel-ui/react-native"
 
 export default function PostCardList() {
   const { posts = generatePlaceholder(4, "postId"), isLoading } = usePosts(1); // [!code highlight]
 
   return (
     <Skel.Root isLoading={isLoading}>
-      <section className="grid grid-cols-2 gap-6">
+      <section className="grid md:grid-cols-2 gap-6">
         {posts.map((post) => (
           <div
             key={post.postId}

@@ -19,14 +19,14 @@ export default function Layout({ children }: { children: ReactNode }) {
           <DocsLayout
             nav={{
               title: (
-                <div className="space-x-1 flex items-end">
-                  <Image src={Logo} alt="" className="w-5 rounded" />
+                <div className="space-x-1 flex items-center">
+                  <Image src={Logo} alt="" className="w-6 rounded" />
                   <p className="text-lg/none font-semibold">Skel UI</p>
                 </div>
               ),
             }}
             tree={source.pageTree}
-            sidebar={{ collapsible: false, defaultOpenLevel: 1 }}
+            sidebar={{ collapsible: true, defaultOpenLevel: 1 }}
             githubUrl="https://github.com/sudoaugustin/skel-ui"
           >
             {children}

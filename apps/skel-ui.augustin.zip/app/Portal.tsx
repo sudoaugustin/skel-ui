@@ -27,15 +27,12 @@ export default function Portal({ children, className, codesandbox, disableRefres
     <section
       className={`not-prose relative border border-b-0 border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 backdrop-blur-md text-neutral-800 rounded-t-lg [&+*]:rounded-t-none [&+*]:mt-0 ${className}`}
     >
-      <div className="min-h-[28rem] max-h-[40rem] h-full overflow-y-auto w-full">
-        <div
-          key={refresh}
-          className="p-5 lg:p-10 w-full flex justify-center [&_img]:animate-fd-fade-in leading-normal selection:bg-neutral-800 selection:text-white"
-        >
+      <div className="overflow-auto">
+        <div key={refresh} className="p-5 lg:p-10 w-full flex justify-center [&_img]:animate-fd-fade-in leading-normal">
           {children}
         </div>
       </div>
-      <div className="flex space-x-2.5 absolute bottom-5 right-5 text-neutral-100">
+      <div className="flex space-x-2.5 absolute bottom-2.5 right-2.5 text-neutral-100">
         {codesandbox && (
           <a
             rel="noreferrer"
