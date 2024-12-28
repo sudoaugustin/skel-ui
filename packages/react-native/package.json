@@ -42,7 +42,9 @@
     "url": "git+https://github.com/sudoaugustin/skel-ui"
   },
   "dependencies": {
-    "@skel-ui/core": "workspace:*"
+    "@skel-ui/core": "workspace:*",
+    "expo-linear-gradient": "^14.0.",
+    "react-native-reanimated": "^3.0"
   },
   "devDependencies": {
     "@skel-ui/core": "workspace:*",
