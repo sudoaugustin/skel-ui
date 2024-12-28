@@ -3,7 +3,7 @@
   "author": "https://github.com/sudoaugustin",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Small but mighty skeleton loading for React",
+  "description": "Lightweight and powerful skeleton loading library for React.",
   "files": ["dist"],
   "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",

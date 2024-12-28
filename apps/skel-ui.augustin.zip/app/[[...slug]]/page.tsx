@@ -17,6 +17,7 @@ export default async function Page({ params }: Props) {
 
   if (!page) notFound();
   const MDX = page.data.body;
+  const isHomePage = page.url === "/";
   // const time = await getGithubLastEdit({
   //   sha: "main",
   //   repo: "skel-ui",
@@ -34,7 +35,8 @@ export default async function Page({ params }: Props) {
         path: `apps/skel-ui.augustin.zip/content/docs/${page.file.path}`,
         owner: "sudoaugustin",
       }}
-      footer={{ enabled: page.url !== "/" }}
+      footer={{ enabled: !isHomePage }}
+      article={{ className: `${isHomePage && "pb-6"}` }}
       // lastUpdate={new Date(time || "")}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
