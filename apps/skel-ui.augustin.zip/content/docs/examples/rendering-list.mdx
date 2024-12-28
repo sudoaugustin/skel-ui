@@ -19,6 +19,9 @@ import { PostCardList } from "@skel-ui/react/$components";
   }
 }
 ```
+<Callout type="warn">
+    Package exports is still [beta](https://reactnative.dev/blog/2023/06/21/package-exports-support) in React Native. So if it's not being [enabled](https://reactnative.dev/blog/2023/06/21/package-exports-support#enabling-package-exports-beta), please change the import source of `generatePlaceholder` to `@skel-ui/react-native/dist/esm/utils.js`.
+</Callout>
 
 ## `generatePlaceholder`
 
