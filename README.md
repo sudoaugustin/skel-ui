@@ -1,4 +1,4 @@
-![Skel UI Banner](.github/assets/logo.png)
+![Skel UI Banner](.github/assets/banner.png)
 
 Skel UI resolves the challenges of implementing skeletons by eliminating the need to create dedicated loading screens and providing an easier way to manage skeleton states using React Context.
 
