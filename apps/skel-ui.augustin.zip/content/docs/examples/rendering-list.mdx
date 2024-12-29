@@ -1,0 +1,37 @@
+---
+title: Rendering List
+description: Skel UI has a built-in utility for generating placeholders, which is very useful for rendering lists.
+---
+
+import Portal from "app/Portal";
+import { PostCardList } from "@skel-ui/react/$components";
+
+<Portal codesandbox="https://codesandbox.io/p/sandbox/rendering-list-34rj8q" className="[&>div]:max-h-[32rem] lg:[&>div]:max-h-[44rem]">
+  <PostCardList />
+</Portal>
+
+```json doc-gen:file
+{
+  "file": "./codes/snippets/PostCardList.tsx",
+  "codeblock": {
+    "lang": "tsx",
+    "meta": ""
+  }
+}
+```
+<Callout type="warn">
+    Package exports is still [beta](https://reactnative.dev/blog/2023/06/21/package-exports-support) in React Native. So if it's not being [enabled](https://reactnative.dev/blog/2023/06/21/package-exports-support#enabling-package-exports-beta), please change the import source of `generatePlaceholder` to `@skel-ui/react-native/dist/esm/utils.js`.
+</Callout>
+
+## `generatePlaceholder`
+
+```js
+const placeholderUsers = generatePlaceholder(length, primaryKey);
+```
+
+### Parameters
+
+| Name         | Type     | Description                                                         |
+| ------------ | -------- | ------------------------------------------------------------------- |
+| `length`     | `number` | The length of placeholder                                           |
+| `primaryKey` | `string` | Name of the attribute that will be unique and will be used as `key` |

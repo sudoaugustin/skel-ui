@@ -1,0 +1,14 @@
+{
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "strict": true,
+    "target": "ES2018",
+    "module": "CommonJS",
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

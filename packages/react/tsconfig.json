@@ -1,13 +1,4 @@
 {
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "strict": true,
-    "target": "ES2018",
-    "module": "CommonJS",
-    "declaration": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true
-  }
+  "extends": "commons-tsconfig/base.json",
+  "include": ["src/**/*", "stories/**/*"]
 }

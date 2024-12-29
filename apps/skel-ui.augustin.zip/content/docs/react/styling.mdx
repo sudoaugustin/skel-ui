@@ -1,0 +1,56 @@
+---
+title: Styling
+description: Skel UI provides styling through CSS variables, Component props and CSS styling.
+---
+
+## CSS variables
+
+Overrides the skeleton's default colors and border-radius with CSS variables.
+
+```css title="global.css"
+:root {
+  --skel-ui-color: #a1a1aa;
+  --skel-ui-radius: 0.25rem;
+  --skel-ui-shimmer-color: #e4e4e7; /* No need to define for pulse animation */
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --skel-ui-color: #27272a;
+    --skel-ui-shimmer-color: #09090b;
+  }
+}
+```
+
+## Component props
+
+The width, height and radius of the skeleton for each element can be modified with three special props.
+
+```tsx
+<Skel.h1 sw="75%" sh="4rem" sr="1rem">
+  ...
+</Skel.h1>
+```
+
+| Name | Type                             | Description                                  |
+| -----| -------------------------------- | -------------------------------------------- |
+| `sw` | `string`                         | Width of the skeleton                        |
+| `sh` | `string`                         | Height of the skeleton                       |
+| `sr` | `string`                         | Overrides the default skeleton border-radius |
+
+## CSS Styling
+
+Skel UI apply a data-loading attribute which can be used to apply styles.
+
+```css
+/* This style will be applied during loading. */
+.card-title[data-loading="true"] {
+  width: 5rem;
+}
+
+/* This style will be applied after loading is done. */
+.card-title[data-loading="false"]:hover {
+  background: #f97316;
+}
+```

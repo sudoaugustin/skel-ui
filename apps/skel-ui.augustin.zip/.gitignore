@@ -1,7 +1,7 @@
 # deps
 /node_modules
 
-# generated content
+# snippets content
 .contentlayer
 .content-collections
 .source

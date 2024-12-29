@@ -1,0 +1,43 @@
+---
+title: Tailwind CSS
+description: Skel UI provides first-class support for Tailwind CSS through a custom plugin.
+---
+
+## Import plugin
+
+Add Skel UI plugin to the plugins array of your tailwind config file.
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+
+module.exports = {
+  plugins: [
+    require("@skel-ui/react/tailwind")(), // [!code highlight]
+  ],
+};
+```
+
+## Variants
+
+### `loading:`
+
+This variant is used to style the components while loading. Useful to define size of the skeleton and prevent pointer events.
+
+```tsx
+// [!code word:loading\:w-32 loading\:h-10]
+<Skel.h1 className="text-lg font-medium loading:w-32 loading:h-10">
+  ...
+</Skel.h1>
+```
+
+### `loaded:`
+
+This variant is used to style the components after loading is done. Useful to define stylings like background and hover effects.
+
+```tsx
+// [!code word:loaded\:bg-blue-400]
+// [!code word:loaded\:border-2 loaded\:hover\:scale-125]
+<Skel.h1 className="text-lg font-medium loaded:border-2 loaded:hover:scale-125">
+  ...
+</Skel.Item>
+```

@@ -1,9 +1,8 @@
 "use client";
-import "./PostCard/index.css";
-import "./PostCardList/index.css";
+
+import Animations from "./Animations";
 import Image from "./Image";
 import PostCard from "./PostCard";
-import PostCardAnimations from "./PostCardAnimations";
 import PostCardList from "./PostCardList";
 
-export { Image, PostCard, PostCardList, PostCardAnimations };
+export { Animations, Image, PostCard, PostCardList };

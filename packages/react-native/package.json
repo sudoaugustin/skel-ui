@@ -1,0 +1,64 @@
+{
+  "name": "@skel-ui/react-native",
+  "author": "https://github.com/sudoaugustin",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Lightweight and powerful skeleton loading library for React.",
+  "files": ["dist"],
+  "main": "dist/cjs/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/esm/index.js",
+  "keywords": ["react", "native", "skeleton", "loading", "placeholder"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/esm/utils.js",
+      "require": "./dist/cjs/utils.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "utils": ["./dist/utils.d.ts"]
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && pnpm build:dts && pnpm build:esm && pnpm build:cjs",
+    "build:dts": "tsc -p tsconfig.json --outDir dist --emitDeclarationOnly",
+    "build:css": "esbuild src/styles.css --outdir=dist",
+    "build:esm": "esbuild src/*.ts* --format=esm --outdir=dist/esm",
+    "build:cjs": "esbuild src/*.ts* --format=cjs --outdir=dist/cjs"
+  },
+  "bugs": {
+    "url": "https://github.com/sudoaugustin/skel-ui/issues"
+  },
+  "homepage": "https://skel-ui.augustin.zip",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudoaugustin/skel-ui"
+  },
+  "dependencies": {
+    "@skel-ui/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@skel-ui/core": "workspace:*",
+    "@types/react": "18.3.12",
+    "commons-tsconfig": "workspace:*",
+    "esbuild": "^0.24.0",
+    "expo-linear-gradient": "^14.0",
+    "react": "^18.3.1",
+    "react-native": "0.76.3",
+    "typescript": "^5.7.2",
+    "react-native-reanimated": "^3.0"
+  },
+  "peerDependencies": {
+    "expo-linear-gradient": "^14.0",
+    "react": "^17.0 || ^18.0",
+    "react-native": "*",
+    "react-native-reanimated": "^3.0"
+  }
+}

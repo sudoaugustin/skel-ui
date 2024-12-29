@@ -7,12 +7,16 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-      "a11y": { "noSvgWithoutTitle": "off" },
+      "a11y": {
+        "noSvgWithoutTitle": "off"
+      },
       "style": {
         "useImportType": "off",
         "noNonNullAssertion": "off"
       },
-      "suspicious": { "noRedeclare": "off" },
+      "suspicious": {
+        "noRedeclare": "off"
+      },
       "complexity": { "all": false },
       "performance": {
         "noAccumulatingSpread": "off"

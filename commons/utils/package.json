@@ -1,0 +1,10 @@
+{
+  "name": "commons-utils",
+  "version": "0.0.1",
+  "dependencies": {
+    "@types/react": "^18.3.12",
+    "commons-tsconfig": "workspace:*",
+    "react": "^18.3.1",
+    "typescript": "^5.7.2"
+  }
+}

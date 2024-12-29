@@ -1,0 +1,62 @@
+---
+title: Styling
+description: Skel UI provides styling through Skel Provider and Component props in react-native.
+---
+
+import Portal from "app/Portal";
+import * as Skel from "@skel-ui/react";
+
+## Skel UI Provider
+
+Overrides the skeleton's default colors and border-radius via `Skel.Provider`.
+
+```tsx title="App.tsx"
+<Skel.Provider
+  color="#a1a1aa"
+  radius={4}
+  shimmer={{ color: "#e4e4e7" }}
+>
+  ...
+</Skel.Provider>
+```
+
+## Component props
+
+The width, height and radius of the skeleton for each element can be modified with three special props.
+
+```tsx
+<Skel.Text sw="75%" sh={64} sr={16}>
+  ...
+</Skel.Text>
+```
+
+| Name | Type                             | Description                                  |
+| -----| -------------------------------- | -------------------------------------------- |
+| `sw` | `string`                         | Width of the skeleton                        |
+| `sh` | `string`                         | Height of the skeleton                       |
+| `sr` | `number`                         | Overrides the default skeleton border-radius |
+
+<Callout type="warn">
+    By default, the border-radius defined in `style` will be applied to the skeleton. Therefore, avoid setting `sr` unless you want a different border-radius for the skeleton.
+</Callout>
+
+## Text based on `numberOfLines`
+
+Skel UI listen to the `numberOfLines` prop in `Text` component.
+
+<Portal className="first:[&>div]:min-h-0" disableRefresh>
+    <div className="w-full flex items-start justify-between">
+        <Skel.Root isLoading>
+           <Skel.div className="w-full max-w-80"/>
+           <Skel.div className="w-full max-w-80 h-16"/>
+        </Skel.Root>
+    </div>
+</Portal>
+<div className="flex [&>*]:flex-1 [&>*]:m-0 divide-x border rounded-b-lg [&_*]:border-0 [&_*]:rounded-none">
+    ```tsx
+    <Skel.Text> ... </Skel.Text>
+    ```
+    ```tsx
+    <Skel.Text numberOfLines={3}> ... </Skel.Text>
+    ```
+</div>

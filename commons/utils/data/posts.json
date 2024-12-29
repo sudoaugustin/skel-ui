@@ -1,0 +1,182 @@
+[
+  {
+    "userId": 1,
+    "postId": 101,
+    "title": "A Day in the Life",
+    "description": "Exploring the beauty of everyday moments, from the morning sunrise to quiet reflections in the evening.",
+    "image": "https://plus.unsplash.com/premium_photo-1664443577542-06294d3354ff?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhZGllbnRzfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 150,
+    "likesCount": 20
+  },
+  {
+    "userId": 1,
+    "postId": 102,
+    "title": "Mountain Adventures",
+    "description": "Hiking through the scenic mountains was both challenging and exhilarating. It’s a reminder of how small we are in the vastness of nature.",
+    "image": "https://plus.unsplash.com/premium_photo-1673264933048-3bd3f5b86f9d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y292ZXIlMjBwaG90b3N8ZW58MHx8MHx8fDA%3D",
+    "viewsCount": 200,
+    "likesCount": 35
+  },
+  {
+    "userId": 1,
+    "postId": 103,
+    "title": "City Nights",
+    "description": "The city skyline at night is mesmerizing, with its glittering lights and bustling energy. Walking through the streets is an experience.",
+    "image": "https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y292ZXIlMjBwaG90b3N8ZW58MHwwfDB8fHww",
+    "viewsCount": 300,
+    "likesCount": 45
+  },
+  {
+    "userId": 2,
+    "postId": 104,
+    "title": "Beachside Relaxation",
+    "description": "A peaceful day by the beach with the sound of waves crashing and the salty breeze in the air.",
+    "image": "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvdmVyJTIwcGhvdG9zfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 175,
+    "likesCount": 25
+  },
+  {
+    "userId": 2,
+    "postId": 105,
+    "title": "Sunset Views",
+    "description": "Capturing the golden hour from the perfect spot. The way the sun slowly sinks behind the hills, casting a golden hue across the sky, is truly breathtaking. These moments remind us of the simple yet profound beauty in life.",
+    "image": "https://images.unsplash.com/photo-1489769002049-ccd828976a6c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y292ZXIlMjBwaG90b3N8ZW58MHwwfDB8fHww",
+    "viewsCount": 250,
+    "likesCount": 40
+  },
+  {
+    "userId": 2,
+    "postId": 106,
+    "title": "Road Trip",
+    "description": "Adventures along the coast with friends, listening to music, and sharing laughs. Road trips are a reminder that sometimes, the journey is just as important as the destination. Each stop brings new memories and discoveries.",
+    "image": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y292ZXIlMjBwaG90b3N8ZW58MHwwfDB8fHww",
+    "viewsCount": 125,
+    "likesCount": 15
+  },
+  {
+    "userId": 3,
+    "postId": 107,
+    "title": "Cooking with Friends",
+    "description": "A cozy evening spent in the kitchen, trying new recipes with friends. There’s something special about sharing a meal you’ve prepared together, and the conversations that flow naturally around the dinner table.",
+    "image": "https://plus.unsplash.com/premium_photo-1667899357174-f5d890ed89aa?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvdmVyJTIwcGhvdG9zfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 180,
+    "likesCount": 22
+  },
+  {
+    "userId": 3,
+    "postId": 108,
+    "title": "Art Gallery Visit",
+    "description": "Exploring modern art at the city gallery was a thought-provoking experience. Each piece told its own story, sparking deep conversations and new perspectives on creativity, culture, and life.",
+    "image": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvdmVyJTIwcGhvdG9zfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 230,
+    "likesCount": 28
+  },
+  {
+    "userId": 3,
+    "postId": 109,
+    "title": "Photography Walk",
+    "description": "Capturing the streets through the lens of a camera. There’s something magical about seeing the world in frames, finding beauty in the overlooked details, and freezing moments in time that tell their own unique stories.",
+    "image": "https://images.unsplash.com/photo-1623627484632-f041d1fb366d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNvdmVyJTIwcGhvdG9zfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 205,
+    "likesCount": 30
+  },
+  {
+    "userId": 4,
+    "postId": 110,
+    "title": "Forest Trails",
+    "description": "Getting lost in the beauty of the woods, where the only sounds are the rustling leaves and the occasional birdcall. It’s in these quiet moments that you can truly feel connected to nature and find peace away from the chaos of everyday life.",
+    "image": "https://plus.unsplash.com/premium_photo-1699851157839-5a1773bc27e1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNvdmVyJTIwcGhvdG9zfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 290,
+    "likesCount": 55
+  },
+  {
+    "userId": 4,
+    "postId": 111,
+    "title": "Home Gardening",
+    "description": "Growing fresh vegetables in the backyard has been such a rewarding experience. There’s something deeply fulfilling about tending to your garden and watching life grow under your care, from tiny seeds to vibrant produce.",
+    "image": "https://plus.unsplash.com/premium_photo-1664443577507-1930a78a60df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Z3JhZGllbnRzfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 195,
+    "likesCount": 26
+  },
+  {
+    "userId": 4,
+    "postId": 112,
+    "title": "Weekend Escape",
+    "description": "A weekend spent away from the hustle and bustle, surrounded by nature and tranquility. It’s amazing how much clarity and relaxation a short escape can bring, allowing you to return to life feeling refreshed and renewed.",
+    "image": "https://images.unsplash.com/photo-1508796079212-a4b83cbf734d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JhZGllbnRzfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 320,
+    "likesCount": 60
+  },
+  {
+    "userId": 5,
+    "postId": 113,
+    "title": "Fitness Goals",
+    "description": "Working towards a healthier lifestyle, one step at a time. Each workout is a challenge, but also a reminder of the progress made, both physically and mentally. It’s about consistency, self-care, and personal growth.",
+    "image": "https://images.unsplash.com/photo-1635776063328-153b13e3c245?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3JhZGllbnRzfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 245,
+    "likesCount": 35
+  },
+  {
+    "userId": 5,
+    "postId": 114,
+    "title": "Creative Writing",
+    "description": "Sharing my latest short story, a reflection on life’s unexpected turns and the resilience of the human spirit. Writing has always been my outlet for self-expression, and I love connecting with others through my words.",
+    "image": "https://images.unsplash.com/photo-1635776063043-ab23b4c226f6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGdyYWRpZW50c3xlbnwwfDB8MHx8fDA%3D",
+    "viewsCount": 160,
+    "likesCount": 18
+  },
+  {
+    "userId": 5,
+    "postId": 115,
+    "title": "Book Review",
+    "description": "Discussing the themes of my recent read, which explores identity, belonging, and the complexities of human relationships. It’s always interesting to dive deep into the characters and worlds created by authors and reflect on how they resonate with real life.",
+    "image": "https://images.unsplash.com/photo-1635776062764-e025521e3df3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGdyYWRpZW50c3xlbnwwfDB8MHx8fDA%3D",
+    "viewsCount": 110,
+    "likesCount": 12
+  },
+  {
+    "userId": 1,
+    "postId": 116,
+    "title": "Neighborhood",
+    "description": "Walking through hidden gems of the city, discovering local shops, street art, and new cafes.",
+    "image": "https://images.unsplash.com/photo-1635776062360-af423602aff3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z3JhZGllbnRzfGVufDB8MHwwfHx8MA%3D%3D",
+    "viewsCount": 185,
+    "likesCount": 20
+  },
+  {
+    "userId": 2,
+    "postId": 117,
+    "title": "Coffee Break",
+    "description": "Enjoying a quiet moment at a local cafe, sipping on a warm cup of coffee. It’s the simple pleasures that bring the most joy, especially when paired with a good book or an interesting conversation with a stranger.",
+    "image": "https://plus.unsplash.com/premium_photo-1701710544008-47e27d45c6f1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdyYWRpZW50c3xlbnwwfDB8MHx8fDA%3D",
+    "viewsCount": 210,
+    "likesCount": 30
+  },
+  {
+    "userId": 3,
+    "postId": 118,
+    "title": "Vintage Market Finds",
+    "description": "Treasures found at the weekend market, from antique furniture to quirky decor. There’s a sense of nostalgia and excitement in discovering items with stories and history, each one waiting to be part of your own life.",
+    "image": "https://images.unsplash.com/photo-1635776064096-4e12cce9ead4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdyYWRpZW50c3xlbnwwfDB8MHx8fDA%3D",
+    "viewsCount": 190,
+    "likesCount": 25
+  },
+  {
+    "userId": 4,
+    "postId": 119,
+    "title": "Morning Run",
+    "description": "Getting energized for the day with a morning run through the park. The fresh air, the rhythm of your feet on the ground, and the quiet before the city wakes up make it the perfect time to clear your mind and focus on your goals.",
+    "image": "https://images.unsplash.com/photo-1673526759349-50f6a23fac25?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGdyYWRpZW50c3xlbnwwfDB8MHx8fDA%3D",
+    "viewsCount": 170,
+    "likesCount": 18
+  },
+  {
+    "userId": 5,
+    "postId": 120,
+    "title": "Meditation Practice",
+    "description": "Focusing on mindfulness and peace during my daily meditation practice. It’s been a transformative experience, helping me stay grounded and balanced amidst the demands of everyday life. A few minutes of quiet can go a long way.",
+    "image": "https://plus.unsplash.com/premium_photo-1672201106204-58e9af7a2888?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Z3JhZGllbnR8ZW58MHwwfDB8fHww",
+    "viewsCount": 220,
+    "likesCount": 40
+  }
+]

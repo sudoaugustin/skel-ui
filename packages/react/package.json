@@ -1,26 +1,24 @@
 {
   "name": "@skel-ui/react",
   "author": "https://github.com/sudoaugustin",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "license": "MIT",
-  "description": "Next era of skeleton loading for React",
-  "files": [
-    "dist"
-  ],
+  "description": "Lightweight and powerful skeleton loading library for React.",
+  "files": ["dist"],
   "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/esm/index.js",
-  "keywords": [
-    "react",
-    "skeleton",
-    "loading",
-    "placeholder"
-  ],
+  "keywords": ["react", "skeleton", "loading", "placeholder"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/esm/utils.js",
+      "require": "./dist/cjs/utils.js"
     },
     "./tailwind": {
       "types": "./dist/tailwind.d.ts",
@@ -30,13 +28,19 @@
     "./styles.css": "./dist/styles.css",
     "./$components": "./stories/components/index.tsx"
   },
+  "typesVersions": {
+    "*": {
+      "utils": ["./dist/utils.d.ts"],
+      "tailwind": ["./dist/tailwind.d.ts"]
+    }
+  },
   "scripts": {
     "dev": "storybook dev -p 6006 --no-open",
     "build": "rm -rf dist && pnpm build:dts && pnpm build:css && pnpm build:esm && pnpm build:cjs",
     "build:dts": "tsc -p tsconfig.build.json --outDir dist",
     "build:css": "esbuild src/styles.css --outdir=dist",
-    "build:esm": "esbuild src/*.ts* --jsx=automatic --format=esm --outdir=dist/esm",
-    "build:cjs": "esbuild src/*.ts* --jsx=automatic --format=cjs --outdir=dist/cjs"
+    "build:esm": "esbuild src/*.ts* --format=esm --outdir=dist/esm",
+    "build:cjs": "esbuild src/*.ts* --format=cjs --outdir=dist/cjs"
   },
   "bugs": {
     "url": "https://github.com/sudoaugustin/skel-ui/issues"
@@ -46,9 +50,12 @@
     "type": "git",
     "url": "git+https://github.com/sudoaugustin/skel-ui"
   },
+  "dependencies": {
+    "@skel-ui/core": "workspace:*"
+  },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
-    "@heroicons/react": "^2.1.5",
+    "@skel-ui/core": "workspace:*",
     "@storybook/addon-essentials": "^8.3.4",
     "@storybook/addon-interactions": "^8.3.4",
     "@storybook/addon-links": "^8.3.4",
@@ -57,14 +64,16 @@
     "@storybook/react": "^8.3.4",
     "@storybook/react-vite": "^8.3.4",
     "@storybook/test": "^8.3.4",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "commons-tsconfig": "workspace:*",
+    "commons-utils": "workspace:*",
     "esbuild": "^0.24.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "^8.3.4",
     "tailwindcss": "^3.4.13",
-    "typescript": "^5.6.2"
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
     "react": "^17.0 || ^18.0",

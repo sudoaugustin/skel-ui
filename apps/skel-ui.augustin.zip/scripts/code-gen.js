@@ -1,29 +1,38 @@
-const path = require("node:path");
 const jetpack = require("fs-jetpack");
 
-const root = "../../packages/react/stories/components";
-const folders = ["PostCard", "PostCardList", "PostCardNested"];
+const stories = ["PostCard.tsx", "PostCardList.tsx"];
 
-folders.forEach((folder) => {
-  const files = ["index.tsx", "index.css", "PostCardList.tsx"];
-  files.forEach((file) => {
-    const content = jetpack.read(`${root}/${folder}/${file}`);
-    if (content) {
-      content
-        .replace("../Image", "@ui/Image")
-        .replace("../../hooks", "hooks")
-        .replace("../../../src", "@skel-ui/react")
-        .replace(
-          `
+function writeOutput(filename, content, isNative) {
+  jetpack.write(`./codes/snippets/${isNative ? "native/" : ""}${filename}`, content);
+}
+
+// For React
+stories.forEach((filename) => {
+  let content = `${jetpack.read(`../../packages/react/stories/components/${filename}`)}\n\n`;
+  if (content) {
+    content = content
+      .replace("\n", "")
+      .replace("./Image", "@ui/image")
+      .replace('import { usePost } from "commons-utils/hooks";\n', "")
+      .replace('import { usePosts } from "commons-utils/hooks";\n', "")
+      .replace(
+        `
 type Props = {
-    isLoading?: boolean;
-  };`,
-          "",
-        )
-        .replace("props: Props", "")
-        .replace("props.isLoading !== undefined ? props.isLoading : isLoading", "isLoading");
+  isLoading?: boolean;
+};\n`,
+        "",
+      )
+      .replace("props: Props", "")
+      .replace("props.isLoading !== undefined ? props.isLoading : isLoading", "isLoading")
+      .replaceAll("../../src", "@skel-ui/react");
 
-      jetpack.write(`./codes/${folder}/${file}`, content);
-    }
-  });
+    writeOutput(filename, content);
+  }
 });
+
+let content = jetpack.read("./codes/PostCard.Old.tsx");
+content = content
+  .replace('"use client";\n', "")
+  .replace('import { usePost } from "commons-utils/hooks";\n', "")
+  .replaceAll("../", "");
+writeOutput("PostCard.Old.tsx", content);

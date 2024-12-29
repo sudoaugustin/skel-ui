@@ -1,0 +1,52 @@
+---
+title: Animation
+---
+
+import Portal from "app/Portal";
+import { PostCard, Animations } from "@skel-ui/react/$components";
+
+## Built-in animations
+Skel UI defaults to using a shimmer animation effect for skeletons, but it also includes a built-in pulse animation.
+
+<Portal>
+  <Animations />
+</Portal>
+<div className="flex [&>*]:flex-1 [&>*]:m-0 divide-x border rounded-b-lg [&_*]:border-0 [&_*]:rounded-none">
+    ```tsx
+    <Skel.Provider> ... </Skel.Provider>
+    ```
+    ```tsx
+    <Skel.Provider skelUIPulse> ... </Skel.Provider>
+    ```
+</div>
+
+## Animation Timing
+The timing of the animation can be customized via `Skel.Provider`.
+```tsx title="App.tsx"
+import { Easing } from "react-native-reanimated";
+
+<Skel.Provider
+  animation={{
+    duration: 3500 /* in millisecond */,
+    easing: Easing.linear /* Should be imported from `react-native-reanimated` */,
+    delay: 250 /* in millisecond */,
+  }}
+>
+  ...
+</Skel.Provider>
+```
+
+## Custom animation
+You can also pass your own animation component to Skel UI.
+
+```tsx title="App.tsx"
+<Skel.Provider
+  animation={{ component: <CustomAnimation /> }}
+>
+  ...
+</Skel.Provider>
+```
+
+<Callout type="warn">
+    The custom animation component should have a width and height of `100%`.
+</Callout>

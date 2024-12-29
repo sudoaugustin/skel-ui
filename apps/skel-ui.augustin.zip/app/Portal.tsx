@@ -1,9 +1,9 @@
 "use client";
 
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import { ReactNode, SVGProps, useState } from "react";
+import { HTMLAttributes, SVGProps, useState } from "react";
 
-type Props = { children: ReactNode; codesandbox: string };
+type Props = HTMLAttributes<HTMLElement> & { codesandbox?: string; disableRefresh?: boolean };
 
 function CodesandboxLogo(props: SVGProps<SVGSVGElement>) {
   return (
@@ -16,7 +16,7 @@ function CodesandboxLogo(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export default function Portal({ children, codesandbox }: Props) {
+export default function Portal({ children, className, codesandbox, disableRefresh }: Props) {
   const [refresh, setRefresh] = useState("initial");
 
   const handleRefresh = () => {
@@ -24,16 +24,15 @@ export default function Portal({ children, codesandbox }: Props) {
   };
 
   return (
-    <section className="not-prose relative border border-b-0 border-neutral-200 dark:border-neutral-600 bg-neutral-100 backdrop-blur-md text-neutral-800 rounded-t-lg [&+*]:rounded-t-none [&+*]:mt-0">
-      <div className="min-h-[28rem] max-h-[40rem] overflow-y-auto w-full">
-        <div
-          key={refresh}
-          className="p-5 lg:p-10 w-full flex justify-center [&_img]:animate-fd-fade-in leading-normal selection:bg-neutral-800 selection:text-white"
-        >
+    <section
+      className={`not-prose relative border border-b-0 border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 backdrop-blur-md text-neutral-800 rounded-t-lg [&+*]:rounded-t-none [&+*]:mt-0 ${className}`}
+    >
+      <div className="overflow-auto">
+        <div key={refresh} className="p-5 lg:p-10 w-full flex justify-center [&_img]:animate-fd-fade-in leading-normal">
           {children}
         </div>
       </div>
-      <div className="flex space-x-2.5 absolute bottom-5 right-5 text-neutral-100">
+      <div className="flex space-x-2.5 absolute bottom-2.5 right-2.5 text-neutral-100">
         {codesandbox && (
           <a
             rel="noreferrer"
@@ -45,14 +44,16 @@ export default function Portal({ children, codesandbox }: Props) {
             <CodesandboxLogo className="w-5" />
           </a>
         )}
-        <button
-          type="button"
-          title="Refresh"
-          className="a-10 group flex flex-center rounded-md bg-neutral-800 active:bg-neutral-700"
-          onClick={handleRefresh}
-        >
-          <ArrowPathIcon className="w-5" />
-        </button>
+        {!disableRefresh && (
+          <button
+            type="button"
+            title="Refresh"
+            className="a-10 group flex flex-center rounded-md bg-neutral-800 active:bg-neutral-700"
+            onClick={handleRefresh}
+          >
+            <ArrowPathIcon className="w-5" />
+          </button>
+        )}
       </div>
     </section>
   );
