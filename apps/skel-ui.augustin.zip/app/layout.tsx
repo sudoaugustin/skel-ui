@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               banner: (
                 <div className="px-4 py-2 bg-gradient-to-b from-brand/25 to-[#2563EB]/25 text-neutral-800 dark:text-neutral-200 ring-1 ring-inset ring-black/15 dark:ring-white/15 rounded-lg">
                   <h3 className="text-sm font-medium">Support this project</h3>
-                  <p className="text-xs mt-1.5 mb-3">Your stars and upvotes mean more than money to me.</p>
+                  <p className="text-xs mt-1.5 mb-3">Your support is very much appreciated</p>
                   <div className="flex space-x-4">
                     {[
                       {
