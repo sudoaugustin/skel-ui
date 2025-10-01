@@ -1,7 +1,7 @@
 {
   "name": "@skel-ui/react-native",
   "author": "https://github.com/sudoaugustin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "description": "Lightweight and powerful skeleton library for React.",
   "files": ["dist"],
